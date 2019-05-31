@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">VESTIR</string>
+    <string name="orders_summary">ORDERS SUMMARY</string>
+    <string name="new_update_order">NEW/UPDATE ORDER</string>
+    <string name="new_update_client">NEW/UPDATE CLIENT</string>
+    <string name="name">NAME</string>
+    <string name="contact">CONTACT</string>
+    <string name="address">ADDRESS</string>
+    <string name="reference">REFERENCE</string>
+    <string name="new_order_next">NEW ORDER/NEXT</string>
+    <string name="submit">Submit/Update</string>
+</resources>
