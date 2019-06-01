@@ -4,6 +4,8 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import example.com.vestir.database.dao.OrderDao
+import example.com.vestir.database.entity.Order
 
 /**
  * Created by Nishant on 31-May-19.
@@ -11,7 +13,6 @@ import android.content.Context
 
 @Database(entities = arrayOf(Client::class),version = 1)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun clientDao():ClientDao
 
     companion object {
@@ -22,7 +23,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
     }
-
-
+    abstract fun orderDao(): OrderDao
 
 }

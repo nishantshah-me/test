@@ -8,6 +8,7 @@
     <string name="address">ADDRESS</string>
     <string name="reference">REFERENCE</string>
     <string name="new_order_next">NEW ORDER/NEXT</string>
+
     <string name="submit">Submit/Update</string>
     <string name="edit_measurement">EDIT</string>
     <string name="transaction">TRANSACTION</string>
@@ -15,4 +16,31 @@
     <string name="measurements">MEASUREMENTS</string>
     <string name="past_norders">past \norders</string>
     <string name="active_norders">Active \norders</string>
+
+
+    <!--create order-->
+    <string name="str_style">STYLE</string>
+    <string name="str_desc">DESC</string>
+    <string name="str_status">STATUS</string>
+    <string name="hint_measurements">(MEASUREMENTS)</string>
+    <string name="str_measurements">MEASUREMENTS</string>
+    <string name="str_edit">EDIT</string>
+    <string name="str_order">ORDER</string>
+    <string name="str_trial">TRAIL</string>
+    <string name="str_delivery">DELIVERY</string>
+    <string name="str_final">FINAL</string>
+    <string name="str_quote">QUOTE</string>
+    <string name="str_cost">COST</string>
+    <string name="str_view">VIEW</string>
+
+    <string-array name="statusList">
+        <item>Active</item>
+        <item>Trial Done</item>
+        <item>Delivered</item>
+        <item>Paid</item>
+    </string-array>
+
+    <!--order list by customer-->
+    <string name="str_search">Search</string>
+    <string name="new_view_update_order">NEW / VIEW / UPDATE ORDER</string>
 </resources>
