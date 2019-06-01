@@ -41,7 +41,7 @@ class NewClientActivity : AppCompatActivity(), TextWatcher {
 
         etName.addTextChangedListener(this)
 
-        btnSubmit.setOnClickListener({
+     /*   btnSubmit.setOnClickListener({
             if (isvalidForm()) {
                 client = Client()
                 client?.name = etName.text.toString()
@@ -55,7 +55,7 @@ class NewClientActivity : AppCompatActivity(), TextWatcher {
                 clientDao.insertClient(client)
             }
 
-        })
+        })*/
     }
 
     fun isvalidForm(): Boolean {
