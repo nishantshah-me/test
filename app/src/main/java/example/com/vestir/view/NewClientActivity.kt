@@ -6,12 +6,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.view.View
 import android.widget.Toast
 import example.com.vestir.R
 import example.com.vestir.database.AppDatabase
-import example.com.vestir.database.Client
-import example.com.vestir.database.ClientDao
+import example.com.vestir.database.entity.Client
+import example.com.vestir.database.dao.ClientDao
 import kotlinx.android.synthetic.main.activity_new_client.*
 
 class NewClientActivity : AppCompatActivity(), TextWatcher {

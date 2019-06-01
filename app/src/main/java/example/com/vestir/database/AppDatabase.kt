@@ -4,16 +4,18 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import example.com.vestir.database.dao.ClientDao
 import example.com.vestir.database.dao.OrderDao
+import example.com.vestir.database.entity.Client
 import example.com.vestir.database.entity.Order
 
 /**
  * Created by Nishant on 31-May-19.
  */
 
-@Database(entities = arrayOf(Client::class),version = 1)
+@Database(entities = arrayOf(Client::class, Order::class),version = 2)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun clientDao():ClientDao
+    abstract fun clientDao(): ClientDao
 
     companion object {
         fun getInstance(context : Context):AppDatabase{
