@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.NewClientActivity"></activity>
+        <activity android:name=".view.NewClientActivity" />
+        <activity android:name=".view.CreateOrderActivity" />
+        <activity android:name=".view.OrderListByCustomerActivity" />
     </application>
 
 </manifest>
