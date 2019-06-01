@@ -9,4 +9,10 @@
     <string name="reference">REFERENCE</string>
     <string name="new_order_next">NEW ORDER/NEXT</string>
     <string name="submit">Submit/Update</string>
+    <string name="edit_measurement">EDIT</string>
+    <string name="transaction">TRANSACTION</string>
+    <string name="transaction_history">TRANSACTION HISTORY</string>
+    <string name="measurements">MEASUREMENTS</string>
+    <string name="past_norders">past \norders</string>
+    <string name="active_norders">Active \norders</string>
 </resources>

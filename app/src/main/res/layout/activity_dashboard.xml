@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="@string/new_update_client" />
+            android:text="@string/transaction" />
 
         <TextView
             android:id="@+id/titleTransactionHistory"
@@ -67,7 +67,7 @@
             android:layout_height="80dp"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:text="@string/new_update_order" />
+            />
 
         <TextView
             android:id="@+id/titlePictureReference"
@@ -76,7 +76,7 @@
             android:layout_height="80dp"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:text="@string/orders_summary" />
+            android:text="@string/transaction_history" />
 
 
     </LinearLayout>
