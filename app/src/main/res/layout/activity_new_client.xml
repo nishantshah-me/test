@@ -51,7 +51,7 @@
                     android:text="@string/name"
                     />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/etName"
                     style="@style/editText_background"
                     android:layout_width="0dp"
@@ -147,17 +147,13 @@
                 android:layout_marginTop="@dimen/large_padding"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/measurements"
-
-                    />
-                <CheckBox
-                    android:id="@+id/cbMeasurement"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="true" />
+                    android:text="@string/measurements"
+
+                    />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
