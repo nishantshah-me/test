@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import example.com.vestir.IS_FOR_UPDATE
@@ -13,6 +14,9 @@ import example.com.vestir.database.AppDatabase
 import example.com.vestir.database.entity.ClientOrder
 import kotlinx.android.synthetic.main.activity_order_list_by_customer.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import android.widget.AdapterView
+
+
 
 class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrderItemClickListener {
 
@@ -25,17 +29,21 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
         setContentView(R.layout.activity_order_list_by_customer)
         database = AppDatabase.getInstance(this)
 
-        database.orderDao().getOrderList().observe(this, Observer {
+        database.clientDao().getAllClient().observe(this, Observer {
             val size = it!!.size - 1
             for (i in 0..size) {
-                orderNames.add(i, it.get(i).name)
+                orderNames.add(i, it.get(i).name!!)
             }
-
             val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, orderNames)
             etName.setAdapter(adapter)
-
         })
 
+        etName.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            database.orderDao().getOrderListBasedOnClient(parent.getItemAtPosition(position).toString()).observe(this, Observer<List<ClientOrder>?> {
+                adapter.setList(it)
+                setTextToButton(getString(R.string.new_order))
+            })
+        }
 
         setTextToButton(getString(R.string.new_order))
         adapter = OrderListAdapter(this, this, null)
@@ -60,12 +68,6 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
                 }
             }
         }
-
-        database.orderDao().getOrderListBasedOnClient("Akash Gaikwad").observe(this, Observer<List<ClientOrder>?> {
-            adapter.setList(it)
-            setTextToButton(getString(R.string.new_order))
-        })
-
     }
 
     private fun setTextToButton(text: String){
