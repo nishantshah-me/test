@@ -21,4 +21,7 @@ interface OrderDao {
 
     @Query("select * from ClientOrder")
     fun getOrderList(): LiveData<List<ClientOrder>?>
+
+    @Query("select * from ClientOrder where name = :clientName")
+    fun getOrderListBasedOnClient(clientName: String): LiveData<List<ClientOrder>?>
 }

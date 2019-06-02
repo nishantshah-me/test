@@ -47,7 +47,7 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
             }
         }
 
-        database.orderDao().getOrderList().observe(this, Observer<List<ClientOrder>?> {
+        database.orderDao().getOrderListBasedOnClient("Akash Gaikwad").observe(this, Observer<List<ClientOrder>?> {
             adapter.setList(it)
             setTextToButton(getString(R.string.new_order))
         })
