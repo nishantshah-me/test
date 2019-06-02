@@ -12,7 +12,7 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(indices = arrayOf(Index(value = ["name"], unique = true)))
 class Client{
     @PrimaryKey(autoGenerate = true)
-    var clientId: Int = 0
+     var clientid: Int = 0
 
      var name: String? = null
      var contact: Long? = null

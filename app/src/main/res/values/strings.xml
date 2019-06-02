@@ -9,7 +9,7 @@
     <string name="reference">REFERENCE</string>
     <string name="new_order_next">NEW ORDER/NEXT</string>
 
-    <string name="submit">Submit/Update</string>
+    <string name="submit">Submit</string>
     <string name="edit_measurement">EDIT</string>
     <string name="transaction">TRANSACTION</string>
     <string name="transaction_history">TRANSACTION HISTORY</string>
