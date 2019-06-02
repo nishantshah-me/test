@@ -43,7 +43,7 @@
             android:text="@string/name"
             />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etName"
             style="@style/editText_background"
             android:layout_width="0dp"

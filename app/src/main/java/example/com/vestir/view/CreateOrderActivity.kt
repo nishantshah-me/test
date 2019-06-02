@@ -1,8 +1,10 @@
 package example.com.vestir.view
 
+import android.arch.lifecycle.Observer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import example.com.vestir.IS_FOR_UPDATE
 import example.com.vestir.ORDER_DATA
@@ -17,11 +19,14 @@ class CreateOrderActivity : AppCompatActivity() {
     private var isUpdate: Boolean = false
     private var updateOrderId: Int = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_order)
 
         database = AppDatabase.getInstance(this)
+
+
 
         if(intent.getBooleanExtra(IS_FOR_UPDATE, false) && intent.hasExtra(ORDER_DATA)){
             isUpdate = true
