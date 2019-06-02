@@ -32,6 +32,8 @@
     <string name="str_quote">QUOTE</string>
     <string name="str_cost">COST</string>
     <string name="str_view">VIEW</string>
+    <string name="str_submit">SUBMIT</string>
+    <string name="str_update">UPDATE</string>
 
     <string-array name="statusList">
         <item>Active</item>
@@ -43,4 +45,8 @@
     <!--order list by customer-->
     <string name="str_search">Search</string>
     <string name="new_view_update_order">NEW / VIEW / UPDATE ORDER</string>
+    <string name="new_order">New Order</string>
+    <string name="view_order">View Order</string>
+    <string name="update_order">Update Order</string>
+    <string name="open_cost_page">Open Cost Page</string>
 </resources>

@@ -1,7 +1,8 @@
 package example.com.vestir.database.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
-import example.com.vestir.database.entity.Order
+import example.com.vestir.database.entity.ClientOrder
 
 /**
  * Created by Nishant on 01-Jun-19.
@@ -10,11 +11,14 @@ import example.com.vestir.database.entity.Order
 interface OrderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertClient(order: Order)
+    fun addOrder(order: ClientOrder)
+
+    @Update
+    fun updateOrder(order: ClientOrder)
 
     @Delete
-    fun deleteOrder(order: Order)
+    fun deleteOrder(order: ClientOrder)
 
-    /*@Query("SELECT * FROM Order")
-    fun getOrderList(): List<Order>*/
+    @Query("select * from ClientOrder")
+    fun getOrderList(): List<ClientOrder>?
 }
