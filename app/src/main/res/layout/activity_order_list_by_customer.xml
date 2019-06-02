@@ -89,7 +89,7 @@
         android:textSize="@dimen/textsize_16sp"
         android:background="@drawable/title_bg"
         android:layout_margin="@dimen/std_padding"
-        android:text="@string/new_view_update_order"
+        android:text="@string/new_order"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 

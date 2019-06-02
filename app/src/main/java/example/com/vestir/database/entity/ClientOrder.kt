@@ -2,16 +2,15 @@ package example.com.vestir.database.entity
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import java.io.Serializable
 
 /**
  * Created by Nishant on 01-Jun-19.
  */
 @Entity
-class Order {
+class ClientOrder : Serializable {
     @PrimaryKey(autoGenerate = true)
     var orderId: Int = 0
-
-    var clientName: String = ""
 
     var name: String = ""
     var style: String = ""

@@ -7,13 +7,13 @@ import android.content.Context
 import example.com.vestir.database.dao.ClientDao
 import example.com.vestir.database.dao.OrderDao
 import example.com.vestir.database.entity.Client
-import example.com.vestir.database.entity.Order
+import example.com.vestir.database.entity.ClientOrder
 
 /**
  * Created by Nishant on 31-May-19.
  */
 
-@Database(entities = arrayOf(Client::class, Order::class),version = 2)
+@Database(entities = [(Client::class), (ClientOrder::class)],version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun clientDao(): ClientDao
 
