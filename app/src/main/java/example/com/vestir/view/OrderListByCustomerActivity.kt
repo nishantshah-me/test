@@ -32,19 +32,19 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
         btnSubmit.setOnClickListener {
             val intent = Intent(this@OrderListByCustomerActivity, CreateOrderActivity::class.java)
             when(btnSubmit.text.toString()){
-                getString(R.string.new_order) -> { }
+                getString(R.string.new_order) -> { startActivity(intent) }
                 getString(R.string.update_order) -> {
                     intent.putExtra(IS_FOR_UPDATE, true)
                     val orderForUpdate = adapter.getSelectedOrderList()
                     if(orderForUpdate.isNotEmpty())
                         intent.putExtra(ORDER_DATA, orderForUpdate[0])
+                    startActivity(intent)
                 }
                 else -> {
                     Toast.makeText(this@OrderListByCustomerActivity,
                             "Not implemented." , Toast.LENGTH_SHORT).show()
                 }
             }
-            startActivity(intent)
         }
 
         adapter.setList(database.orderDao().getOrderList())/*.observe(this, Observer<ArrayList<ClientOrder>?> {

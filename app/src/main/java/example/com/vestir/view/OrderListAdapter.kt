@@ -62,6 +62,12 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
     inner class OrderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         fun bind(position: Int){
+            val order = orderList!![position]
+            itemView.txt_client_name.text = order.name
+            itemView.txt_style.text = order.style
+            itemView.txt_status.text = order.status
+            itemView.txt_trial_date.text = order.trial
+            itemView.txt_delivery_date.text = order.delivery
             itemView.cb_order_select.setOnCheckedChangeListener { buttonView, isChecked ->
                 if(isChecked) {
                     toggleOrder(adapterPosition)
