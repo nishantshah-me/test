@@ -51,6 +51,7 @@ class NewClientActivity : AppCompatActivity() {
 
         })
 
+
            btnSubmit.setOnClickListener({
               if (isvalidForm()) {
                   client = Client()
