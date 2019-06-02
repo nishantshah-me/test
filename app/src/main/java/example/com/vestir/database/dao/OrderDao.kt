@@ -20,5 +20,5 @@ interface OrderDao {
     fun deleteOrder(order: ClientOrder)
 
     @Query("select * from ClientOrder")
-    fun getOrderList(): List<ClientOrder>?
+    fun getOrderList(): LiveData<List<ClientOrder>?>
 }

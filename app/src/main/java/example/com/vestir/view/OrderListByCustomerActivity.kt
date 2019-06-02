@@ -47,10 +47,10 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
             }
         }
 
-        adapter.setList(database.orderDao().getOrderList())/*.observe(this, Observer<ArrayList<ClientOrder>?> {
+        database.orderDao().getOrderList().observe(this, Observer<List<ClientOrder>?> {
             adapter.setList(it)
             setTextToButton(getString(R.string.new_order))
-        })*/
+        })
 
     }
 
