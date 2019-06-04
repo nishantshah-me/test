@@ -15,13 +15,13 @@ import example.com.vestir.database.entity.Measurement
  * Created by Nishant on 31-May-19.
  */
 
-@Database(entities = [(Client::class), (ClientOrder::class)],version = 1)
+@Database(entities = [(Client::class), (ClientOrder::class),(Measurement::class)],version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun clientDao(): ClientDao
 
     abstract fun orderDao(): OrderDao
 
-    //abstract fun measurementDao(): MeasurementDao
+    abstract fun measurementDao(): MeasurementDao
 
     companion object {
         fun getInstance(context : Context):AppDatabase{
