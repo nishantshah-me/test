@@ -31,6 +31,7 @@ class NewClientActivity : AppCompatActivity() {
     var msmt = Measurement()
     private var isUpdate: Boolean = false
     private var updateClientId : Int = 0
+    private val REQUEST_CODE = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +87,11 @@ class NewClientActivity : AppCompatActivity() {
             intent.putExtra("pastOrders",true)
             startActivity(intent)
         }
+
+        txtEditMeasurement.setOnClickListener {
+            startActivityForResult(Intent(this@NewClientActivity,MeasurementActivity::class.java),REQUEST_CODE)
+        }
+
     }
 
     private fun checkForNewOrUpdate() {
