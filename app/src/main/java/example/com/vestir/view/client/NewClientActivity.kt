@@ -6,7 +6,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
@@ -16,8 +15,11 @@ import example.com.vestir.database.entity.Client
 import example.com.vestir.database.dao.ClientDao
 import kotlinx.android.synthetic.main.activity_new_client.*
 import android.widget.ArrayAdapter
+import example.com.vestir.IS_FROM_NEW_CLIENT
+import example.com.vestir.ORDER_STATUS
+import example.com.vestir.SELECTED_CLIENT_NAME
 import example.com.vestir.database.entity.Measurement
-import example.com.vestir.view.OrderListByCustomerActivity
+import example.com.vestir.view.clientorder.OrderListByCustomerActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 
@@ -57,7 +59,7 @@ class NewClientActivity : AppCompatActivity() {
             etAddress.setText(clientList.get(indexOf).address)
             etReference.setText(clientList.get(indexOf).reference)
 
-            btnSubmit.setText("Update")
+            btnSubmit.text = "Update"
             updateClientId = clientList.get(indexOf).clientid
         }
 
@@ -66,16 +68,20 @@ class NewClientActivity : AppCompatActivity() {
         img_back.setOnClickListener { onBackPressed() }
 
         btnActiveOrders.setOnClickListener{
-            var intent = Intent(this,OrderListByCustomerActivity::class.java)
-            intent.putExtra("activeOrders",true)
-            startActivity(intent)
+            navigateToOrderList(getString(R.string.status_active))
         }
 
         btnPastOrders.setOnClickListener{
-            var intent = Intent(this,OrderListByCustomerActivity::class.java)
-            intent.putExtra("pastOrders",true)
-            startActivity(intent)
+            navigateToOrderList(getString(R.string.status_paid))
         }
+    }
+
+    private fun navigateToOrderList(orderStatus: String){
+        val intent = Intent(this, OrderListByCustomerActivity::class.java)
+        intent.putExtra(SELECTED_CLIENT_NAME, etName.text.toString().trim())
+        intent.putExtra(ORDER_STATUS, orderStatus)
+        intent.putExtra(IS_FROM_NEW_CLIENT, true)
+        startActivity(intent)
     }
 
     private fun hideKeyboard() {

@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.client.NewClientActivity" />
-        <activity android:name=".view.CreateOrderActivity" />
-        <activity android:name=".view.OrderListByCustomerActivity" />
-        <activity android:name=".view.client.MeasurementActivity"></activity>
+        <activity android:name=".view.clientorder.CreateOrderActivity" />
+        <activity android:name=".view.clientorder.OrderListByCustomerActivity" />
+        <activity android:name=".view.client.MeasurementActivity" />
+        <activity android:name=".view.clientorder.OrderSummaryActivity"></activity>
     </application>
 
 </manifest>

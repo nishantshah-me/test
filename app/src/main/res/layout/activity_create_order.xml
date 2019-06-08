@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateOrderActivity">
+    tools:context=".view.clientorder.CreateOrderActivity">
 
     <include layout="@layout/layout_toolbar"
         android:id="@+id/toolbar"/>
@@ -354,7 +354,7 @@
                         android:layout_marginLeft="@dimen/std_padding"
                         android:layout_toEndOf="@id/txt_quote"
                         android:singleLine="true"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:ellipsize="end"
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="@dimen/std_padding"
