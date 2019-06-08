@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
@@ -18,8 +19,11 @@ import example.com.vestir.database.dao.ClientDao
 import kotlinx.android.synthetic.main.activity_new_client.*
 import android.widget.ArrayAdapter
 import com.google.gson.Gson
+import example.com.vestir.IS_FROM_NEW_CLIENT
+import example.com.vestir.ORDER_STATUS
+import example.com.vestir.SELECTED_CLIENT_NAME
 import example.com.vestir.database.entity.Measurement
-import example.com.vestir.view.OrderListByCustomerActivity
+import example.com.vestir.view.clientorder.OrderListByCustomerActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.util.*
 
@@ -69,6 +73,7 @@ class NewClientActivity : AppCompatActivity() {
             btnNewClient.setText("Update Client")
             updateClientId = clientList[indexOf].clientid
             isUpdate = true;
+
         }
 
         btnSubmit.setOnClickListener({ addClient() })
@@ -80,15 +85,12 @@ class NewClientActivity : AppCompatActivity() {
         }
 
         btnActiveOrders.setOnClickListener{
-            val intent = Intent(this,OrderListByCustomerActivity::class.java)
-            intent.putExtra("activeOrders",true)
-            startActivity(intent)
+
+            navigateToOrderList(getString(R.string.status_active))
         }
 
         btnPastOrders.setOnClickListener{
-            val intent = Intent(this,OrderListByCustomerActivity::class.java)
-            intent.putExtra("pastOrders",true)
-            startActivity(intent)
+            navigateToOrderList(getString(R.string.status_paid))
         }
 
         txtEditMeasurement.setOnClickListener {
@@ -103,6 +105,14 @@ class NewClientActivity : AppCompatActivity() {
         containerFields.visibility = View.VISIBLE
         btnSubmit.visibility = View.VISIBLE
         btnNewClient.visibility = View.GONE
+    }
+
+    private fun navigateToOrderList(orderStatus: String){
+        val intent = Intent(this, OrderListByCustomerActivity::class.java)
+        intent.putExtra(SELECTED_CLIENT_NAME, etName.text.toString().trim())
+        intent.putExtra(ORDER_STATUS, orderStatus)
+        intent.putExtra(IS_FROM_NEW_CLIENT, true)
+        startActivity(intent)
     }
 
     private fun hideKeyboard() {

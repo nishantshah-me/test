@@ -22,6 +22,18 @@ interface OrderDao {
     @Query("select * from ClientOrder")
     fun getOrderList(): LiveData<List<ClientOrder>?>
 
+    @Query("select * from ClientOrder where status = :orderStatus")
+    fun getOrderListBasedOnStatus(orderStatus: String): LiveData<List<ClientOrder>?>
+
     @Query("select * from ClientOrder where name = :clientName")
     fun getOrderListBasedOnClient(clientName: String): LiveData<List<ClientOrder>?>
+
+    @Query("select * from ClientOrder where name = :clientName and status = :orderStatus")
+    fun getOrderListBasedOnClientAndStatus(clientName: String, orderStatus: String): LiveData<List<ClientOrder>?>
+
+    @Query("select count(*) from ClientOrder where status = :orderStatus")
+    fun getOrderListCountBasedOnStatus(orderStatus: String): LiveData<Int>
+
+    @Query("select count(*) from ClientOrder")
+    fun getOrderListCount(): LiveData<Int>
 }

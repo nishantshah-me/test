@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import example.com.vestir.R
 import example.com.vestir.view.client.NewClientActivity
+import example.com.vestir.view.clientorder.OrderListByCustomerActivity
+import example.com.vestir.view.clientorder.OrderSummaryActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -21,8 +23,11 @@ class DashboardActivity : AppCompatActivity() {
         })
 
         titleNewOrder.setOnClickListener({
-            //startActivity(Intent(this, CreateOrderActivity::class.java))
             startActivity(Intent(this, OrderListByCustomerActivity::class.java))
+        })
+
+        titleOrderSummary.setOnClickListener({
+            startActivity(Intent(this, OrderSummaryActivity::class.java))
         })
     }
 }

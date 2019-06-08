@@ -11,10 +11,9 @@ import java.io.Serializable
 @Entity
 class ClientOrder : Serializable {
     @PrimaryKey(autoGenerate = true)
-    var orderId: Int = 0
+    var orderId: Long = 0
 
-    var clientId: Int = 0
-
+    var clientId: Long = 0
     var name: String = ""
     var style: String = ""
     var description: String = ""
@@ -24,6 +23,6 @@ class ClientOrder : Serializable {
     var delivery: String = ""
     var reference: String = "ok"
     var final: String = "ok"
-    var quote: String = ""
-    var cost: String = "cost"
+    var quote: Long = 0
+    var cost: Long = 0
 }

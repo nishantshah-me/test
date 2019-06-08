@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_toolbar"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/std_padding"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            style="@style/title_background">
+
+            <TextView
+                android:id="@+id/lblAllOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:minLines="2"
+                android:maxLines="2"
+                android:text="@string/str_all_order"/>
+
+            <TextView
+                android:id="@+id/txt_all_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/small_padding"
+                android:layout_below="@id/lblAllOrder"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_active"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/small_padding"
+            android:layout_marginRight="@dimen/small_padding"
+            style="@style/title_background">
+
+            <TextView
+                android:id="@+id/lblActiveOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:minLines="2"
+                android:maxLines="2"
+                android:text="@string/str_active_order"/>
+
+            <TextView
+                android:id="@+id/txt_active_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/small_padding"
+                android:layout_below="@id/lblActiveOrder"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_trial_done"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            style="@style/title_background">
+
+            <TextView
+                android:id="@+id/lblTrialDoneOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:minLines="2"
+                android:maxLines="2"
+                android:text="@string/str_trial_done_order"/>
+
+            <TextView
+                android:id="@+id/txt_trial_done_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/small_padding"
+                android:layout_below="@id/lblTrialDoneOrder"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/std_padding"
+        android:paddingRight="@dimen/std_padding"
+        android:gravity="center"
+        android:weightSum="3"
+        android:layout_marginTop="@dimen/std_padding">
+
+        <RelativeLayout
+            android:id="@+id/rl_delivered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            style="@style/title_background">
+
+            <TextView
+                android:id="@+id/lblDeliveredOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:minLines="2"
+                android:maxLines="2"
+                android:text="@string/str_delivered_order"/>
+
+            <TextView
+                android:id="@+id/txt_delivered_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/small_padding"
+                android:layout_below="@id/lblDeliveredOrder"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_paid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            style="@style/title_background"
+            android:layout_marginLeft="@dimen/small_padding">
+
+            <TextView
+                android:id="@+id/lblPaidOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:minLines="2"
+                android:maxLines="2"
+                android:text="@string/str_paid_order"/>
+
+            <TextView
+                android:id="@+id/txt_paid_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/small_padding"
+                android:layout_below="@id/lblPaidOrder"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

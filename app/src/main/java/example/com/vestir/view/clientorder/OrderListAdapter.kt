@@ -1,4 +1,4 @@
-package example.com.vestir.view
+package example.com.vestir.view.clientorder
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -37,7 +37,7 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
 
     private fun toggleOrder(position: Int){
         if(selectedOrdersPosition.get(position, false)){
-            selectedOrdersPosition.removeAt(position)
+            selectedOrdersPosition.delete(position)
             selectedOrders.remove(orderList!![position])
         } else {
             selectedOrdersPosition.put(position, true)
@@ -48,7 +48,9 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
     fun setList(list: List<ClientOrder>?){
         if(list == null)
             orderList = ArrayList<ClientOrder>()
-        else orderList = list
+        else {
+            orderList = list
+        }
         selectedCount = 0
         selectedOrders= ArrayList<ClientOrder>()
         selectedOrdersPosition = SparseBooleanArray()
@@ -68,16 +70,14 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
             itemView.txt_status.text = order.status
             itemView.txt_trial_date.text = order.trial
             itemView.txt_delivery_date.text = order.delivery
-            itemView.cb_order_select.setOnCheckedChangeListener { buttonView, isChecked ->
-                if(isChecked) {
+                itemView.cb_order_select.setOnCheckedChangeListener { buttonView, isChecked ->
+                    if(isChecked)
+                        selectedCount++
+                    else
+                        selectedCount--
                     toggleOrder(adapterPosition)
-                    selectedCount++
+                    listener.onItemCheckChanged(selectedCount)
                 }
-                else {
-                    selectedCount--
-                }
-                listener.onItemCheckChanged(selectedCount)
-            }
         }
     }
 
