@@ -53,11 +53,11 @@
 
                 <EditText
                     android:id="@+id/etFL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
-                    android:hint="sfsfwf"
+                    android:inputType="numberDecimal"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:textSize="@dimen/textsize_16sp" />
@@ -79,13 +79,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etDL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -105,13 +106,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/etBL"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
+                    android:inputType="numberDecimal"
                     android:maxLength="8"
                     android:padding="4dp"
-                    android:id="etBL"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -131,13 +133,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etBP"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -157,13 +160,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etUBL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -183,13 +187,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etYL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -209,13 +214,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etW"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -235,13 +241,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etLW"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -261,13 +268,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etH"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -287,13 +295,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etSh"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -313,13 +322,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etCh"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -347,14 +357,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
-                    android:hint="sfsfwf"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etAH"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -374,13 +384,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etXF"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -400,13 +411,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etXB"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -426,13 +438,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etBi"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -452,13 +465,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etSL1"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -478,13 +492,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etCuf1"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -504,13 +519,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etSL2"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -530,13 +546,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etCuf2"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -563,14 +580,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
-                    android:hint="sfsfwf"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etNL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -590,13 +607,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etBKL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -616,13 +634,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etPL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -642,13 +661,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etPW"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -668,13 +688,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etIL"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -694,13 +715,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/etSL"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
+                    android:inputType="numberDecimal"
                     android:maxLength="8"
                     android:padding="4dp"
-                    android:id="@+id/etSL"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -720,12 +742,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
+                    android:id="@+id/etSW"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -745,13 +769,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etTh"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -771,13 +796,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etKn"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>
@@ -797,13 +823,14 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
                     android:id="@+id/etBt"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/textsize_16sp" />
 
             </TableRow>

@@ -50,4 +50,6 @@
     <string name="update_order">Update Order</string>
     <string name="open_cost_page">Open Cost Page</string>
     <string name="update">Update</string>
+    <string name="cost_page">COST PAGE</string>
+    <string name="generate_invoice">Generate Invoice</string>
 </resources>

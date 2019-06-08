@@ -1,5 +1,6 @@
 package example.com.vestir.view.client
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
@@ -7,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
@@ -17,21 +17,25 @@ import example.com.vestir.database.entity.Client
 import example.com.vestir.database.dao.ClientDao
 import kotlinx.android.synthetic.main.activity_new_client.*
 import android.widget.ArrayAdapter
+import com.google.gson.Gson
 import example.com.vestir.database.entity.Measurement
 import example.com.vestir.view.OrderListByCustomerActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import java.util.*
 
 
 class NewClientActivity : AppCompatActivity() {
 
     lateinit var clientDao: ClientDao
-    var client: Client? = null
+    var client: Client =  Client()
     var clientList: List<Client> = ArrayList()
     var clientNames: MutableList<String>? = null
-    var msmt = Measurement()
+    var measurement = Measurement()
     private var isUpdate: Boolean = false
-    private var updateClientId : Int = 0
+    private var updateClientId : Long = 0
     private val REQUEST_CODE = 100
+    val CLIENT_ID = "clientId"
+    val MEASUREMENT = "measurement"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +43,6 @@ class NewClientActivity : AppCompatActivity() {
         hideKeyboard()
 
         clientNames = ArrayList()
-        client = Client()
 
         clientDao = AppDatabase.getInstance(this).clientDao()
 
@@ -89,7 +92,9 @@ class NewClientActivity : AppCompatActivity() {
         }
 
         txtEditMeasurement.setOnClickListener {
-            startActivityForResult(Intent(this@NewClientActivity,MeasurementActivity::class.java),REQUEST_CODE)
+            val intent = Intent(this@NewClientActivity,MeasurementActivity::class.java)
+            intent.putExtra(CLIENT_ID, updateClientId)
+            startActivityForResult(intent,REQUEST_CODE)
         }
 
     }
@@ -111,28 +116,31 @@ class NewClientActivity : AppCompatActivity() {
     private fun addClient() {
         if (isvalidForm()) {
 
-            client?.name = etName.text.toString()
-            client?.contact = etContact.text.toString().toLong()
-            client?.address = etAddress.text.toString()
-            client?.reference = etReference.text.toString()
+            client.name = etName.text.toString()
+            client.contact = etContact.text.toString().toLong()
+            client.address = etAddress.text.toString()
+            client.reference = etReference.text.toString()
 
              clientList.forEach {
-                 client!!.clientid = updateClientId
-                 isUpdate = it.clientid.equals(client?.clientid)
+                 client.clientid = updateClientId
+                 isUpdate = it.clientid.equals(client.clientid)
              }
 
             if (isUpdate) {
-                client!!.clientid = updateClientId
+                client.clientid = updateClientId
                 clientDao.updateClient(client)
+                measurement.clientId = client.clientid
+                AppDatabase.getInstance(this).measurementDao().updateMeasurement(measurement)
                 Toast.makeText(this, "Client Updated Successfully", Toast.LENGTH_SHORT).show()
             } else {
+                client.clientid = Calendar.getInstance().timeInMillis
                 clientDao.insertClient(client)
-               // msmt.height = 12.3f
-                //msmt.width = 9.3f
-                msmt.clientId = client!!.clientid
-                AppDatabase.getInstance(this).measurementDao().insertMeasurement(msmt)
+                measurement.clientId = client.clientid
+                AppDatabase.getInstance(this).measurementDao().insertMeasurement(measurement)
                 Toast.makeText(this, "Client Added Successfully", Toast.LENGTH_SHORT).show()
+
             }
+            finish()
         }
 
     }
@@ -154,6 +162,17 @@ class NewClientActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            if(data != null){
+                val gson = Gson()
+                val msmtKey = data.getStringExtra(MEASUREMENT)
+                measurement = gson.fromJson(msmtKey,Measurement::class.java)
+            }
+        }
     }
 }
 

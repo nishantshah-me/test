@@ -5,16 +5,10 @@ import android.arch.persistence.room.ForeignKey
 import android.arch.persistence.room.PrimaryKey
 
 
-/*@Entity(foreignKeys = arrayOf(ForeignKey(entity = Client::class,
-        parentColumns = arrayOf("clientid"),
-        childColumns = arrayOf("clientId"),
-        onDelete = ForeignKey.NO_ACTION)))*/
 @Entity
 class Measurement{
-    @PrimaryKey(autoGenerate = true)
-    var measurementId : Int = 0
-
-    var clientId : Int = 0
+    @PrimaryKey
+    var clientId : Long = 1
 
     var full_length : Float? = null
     var dress_length : Float? = null

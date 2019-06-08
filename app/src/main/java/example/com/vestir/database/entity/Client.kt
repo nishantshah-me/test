@@ -11,11 +11,11 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(indices = arrayOf(Index(value = ["name"], unique = true)))
 class Client{
-    @PrimaryKey(autoGenerate = true)
-     var clientid: Int = 1
+     @PrimaryKey()
+     var clientid: Long = 1
 
-     var name: String? = null
-     var contact: Long? = null
-     var address: String? = null
-     var reference: String? = null
+     var name: String = ""
+     var contact: Long = 0
+     var address: String = ""
+     var reference: String = ""
 }

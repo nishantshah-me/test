@@ -19,7 +19,8 @@
         <activity android:name=".view.client.NewClientActivity" />
         <activity android:name=".view.CreateOrderActivity" />
         <activity android:name=".view.OrderListByCustomerActivity" />
-        <activity android:name=".view.client.MeasurementActivity"></activity>
+        <activity android:name=".view.client.MeasurementActivity" />
+        <activity android:name=".view.costing.CostPageActivity"></activity>
     </application>
 
 </manifest>
