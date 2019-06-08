@@ -11,4 +11,5 @@ const val ORDER_STATUS = "order_status"
 const val IS_FROM_ORDER_SUMMARY = "is_from_order_summary"
 const val IS_FROM_NEW_CLIENT = "is_from_new_client"
 const val SELECTED_CLIENT_NAME = "selected_client_name"
+const val ORDER_DATE_FORMAT = "dd/MM/yy"
 const val ORDER_ADD_UPDATE_REQUEST = 1000

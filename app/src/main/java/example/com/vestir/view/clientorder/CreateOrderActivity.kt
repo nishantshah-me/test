@@ -1,16 +1,20 @@
 package example.com.vestir.view.clientorder
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import example.com.vestir.*
 import example.com.vestir.database.AppDatabase
-import example.com.vestir.database.entity.Client
 import example.com.vestir.database.entity.ClientOrder
 import kotlinx.android.synthetic.main.activity_create_order.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CreateOrderActivity : AppCompatActivity() {
     private lateinit var database: AppDatabase
@@ -30,14 +34,46 @@ class CreateOrderActivity : AppCompatActivity() {
             val order = intent.getSerializableExtra(ORDER_DATA) as ClientOrder
             showData(order)
         }
+
         btnSubmit.setOnClickListener { addOrder() }
         img_back.setOnClickListener { onBackPressed() }
-
-        //etorder.setOnClickListener {  }
+        etorder.setOnClickListener {
+            hideKeyboard(etorder)
+            showDatePicker("order")
+        }
+        etTrial.setOnClickListener {
+            hideKeyboard(etTrial)
+            showDatePicker("trial")
+        }
+        etDelivery.setOnClickListener {
+            hideKeyboard(etDelivery)
+            showDatePicker("delivery")
+        }
     }
 
-    private fun showDatePicker(){
+    private fun hideKeyboard(view: View){
+        val imm = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 
+    private fun showDatePicker(date: String){
+        val calendar = Calendar.getInstance()
+        DatePickerDialog(this@CreateOrderActivity,
+                DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                    val cal = Calendar.getInstance()
+                    cal.set(Calendar.YEAR, year)
+                    cal.set(Calendar.MONTH, month)
+                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                    val sdf = SimpleDateFormat(ORDER_DATE_FORMAT)
+                    when(date){
+                        "order" -> etorder.text = sdf.format(cal.time)
+                        "trial" -> etTrial.text = sdf.format(cal.time)
+                        "delivery" -> etDelivery.text = sdf.format(cal.time)
+                    }
+                }, calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show()
     }
 
     private fun addOrder(){

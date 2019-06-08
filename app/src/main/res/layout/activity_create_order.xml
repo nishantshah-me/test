@@ -183,14 +183,15 @@
                         android:text="@string/str_order"
                         />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etorder"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textsize_16sp"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:minEms="5"
-                        android:inputType="text"
+                        android:hint="DD/MM/YY"
+                        android:layout_marginTop="@dimen/small_padding"
                         android:ellipsize="end"
                         />
                 </LinearLayout>
@@ -209,13 +210,14 @@
                         android:text="@string/str_trial"
                         />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etTrial"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textsize_16sp"
+                        android:layout_marginTop="@dimen/small_padding"
+                        android:hint="DD/MM/YY"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:inputType="text"
                         android:minEms="5"
                         android:ellipsize="end" />
                 </LinearLayout>
@@ -235,14 +237,15 @@
                         android:text="@string/str_delivery"
                         />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/etDelivery"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textsize_16sp"
+                        android:layout_marginTop="@dimen/small_padding"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:inputType="text"
                         android:minEms="5"
+                        android:hint="DD/MM/YY"
                         android:ellipsize="end"
                         />
                 </LinearLayout>
@@ -327,7 +330,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="2"
-                android:layout_marginTop="@dimen/std_padding"
+                android:layout_marginTop="@dimen/small_padding"
                 android:orientation="horizontal">
 
                 <RelativeLayout

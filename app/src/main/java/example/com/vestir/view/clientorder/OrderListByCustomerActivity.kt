@@ -66,6 +66,13 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
         btnSubmit.text =  text
     }
 
+    private fun setListToRecyclerView(list: List<ClientOrder>, status: String = orderStatusSelected){
+        val listToSort = ArrayList<ClientOrder>()
+        listToSort.addAll(list)
+        adapter = OrderListAdapter(this, this, sortListBasedOnStatus(status, listToSort))
+        rv_order_list.adapter = adapter
+    }
+
     private fun getDefaultOrderList(){
         rv_order_list.adapter = null
         setTextToButton(getString(R.string.new_order))
@@ -73,25 +80,21 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
             database.orderDao().getOrderList()
                     .observe(this, Observer<List<ClientOrder>?> {
                         if (it != null && it.isNotEmpty()){
-                            adapter = OrderListAdapter(this, this, it)
-                            rv_order_list.adapter = adapter
-                            setTextToButton(getString(R.string.new_order))
+                            setListToRecyclerView(it)
                         }
                     })
         } else {
             database.orderDao().getOrderListBasedOnStatus(orderStatusSelected)
                     .observe(this, Observer<List<ClientOrder>?> {
                         if (it != null && it.isNotEmpty()){
-                            adapter = OrderListAdapter(this, this, it)
-                            rv_order_list.adapter = adapter
-                            setTextToButton(getString(R.string.new_order))
+                            setListToRecyclerView(it)
                         }
                     })
         }
     }
 
     private fun getAutoCompleteViewItemSelectListener(): AdapterView.OnItemClickListener{
-        return AdapterView.OnItemClickListener { parent, view, position, id ->
+        return AdapterView.OnItemClickListener { parent, _, position, _ ->
             if(clientList != null && clientList!!.isNotEmpty()){
                 selectedClientId = clientList!![position].clientid.toLong()
             }
@@ -107,19 +110,29 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
             database.orderDao().getOrderListBasedOnClient(clientName)
                     .observe(this, Observer<List<ClientOrder>?> {
                         if (it != null && it.isNotEmpty()){
-                            adapter = OrderListAdapter(this, this, it)
-                            rv_order_list.adapter = adapter
+                            setListToRecyclerView(it)
                         }
                     })
         } else {
             database.orderDao().getOrderListBasedOnClientAndStatus(clientName, orderStatusSelected)
                     .observe(this, Observer<List<ClientOrder>?> {
                         if (it != null && it.isNotEmpty()){
-                            adapter = OrderListAdapter(this, this, it)
-                            rv_order_list.adapter = adapter
+                            setListToRecyclerView(it)
                         }
                     })
         }
+    }
+
+    private fun sortListBasedOnStatus(status: String, list: ArrayList<ClientOrder>): ArrayList<ClientOrder>{
+        when(status){
+            getString(R.string.status_active)-> list.sortBy { it.trial }
+            getString(R.string.status_trial_done)-> list.sortBy { it.delivery }
+            getString(R.string.status_delivered)-> list.sortBy { it.order }
+            getString(R.string.status_paid)-> list.sortBy { it.order }
+            else -> list.sortBy { it.order }
+        }
+        list.reverse()
+        return list
     }
 
     private fun onSubmitButtonClick(){
