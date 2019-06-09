@@ -78,10 +78,15 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
                     toggleOrder(adapterPosition)
                     listener.onItemCheckChanged(selectedCount)
                 }
+
+            itemView.btn_cost.setOnClickListener {
+                listener.onCostClick()
+            }
         }
     }
 
     interface OnOrderItemClickListener{
         fun onItemCheckChanged(checkItemCount: Int)
+        fun onCostClick()
     }
 }

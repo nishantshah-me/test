@@ -65,4 +65,25 @@
     <string name="str_trial_done_order">Trial Done Order</string>
     <string name="str_delivered_order">Delivered Order</string>
     <string name="str_paid_order">Paid Order</string>
+
+
+    <!--  Time sheet-->
+    <string name="style">STYLE</string>
+    <string name="expenses">EXPENSES</string>
+    <string name="time">TIME</string>
+    <string name="total">TOTAL</string>
+    <string name="advance">ADVANCE</string>
+    <string name="manual">MANUAL</string>
+    <string name="time_sheet">TIME SHEET</string>
+    <string name="timesheet">TIMESHEET</string>
+    <string name="staff">STAFF</string>
+    <string name="date">DATE</string>
+    <string name="unit">UNIT</string>
+
+    <string-array name="staff_list">
+        <item>Akash</item>
+        <item>Mohan</item>
+        <item>Parin</item>
+        <item>XYZ</item>
+    </string-array>
 </resources>

@@ -68,16 +68,17 @@
             android:text="@string/transaction" />
 
         <TextView
-            android:id="@+id/titleTransactionHistory"
+            android:id="@+id/titleTimeSheet"
             style="@style/title_background"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginLeft="8dp"
+            android:text="@string/time_sheet"
             android:layout_weight="1"
             />
 
         <TextView
-            android:id="@+id/titlePictureReference"
+            android:id="@+id/titleTransactionHistory"
             style="@style/title_background"
             android:layout_width="0dp"
             android:layout_height="80dp"

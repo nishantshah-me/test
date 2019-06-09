@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 import android.widget.AdapterView
 import example.com.vestir.*
 import example.com.vestir.database.entity.Client
+import example.com.vestir.view.costing.CostPageActivity
 
 
 class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrderItemClickListener {
@@ -205,5 +206,11 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
                 getOrderByClient(autoCompleteText)
             }
         } else super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+    override fun onCostClick() {
+        val intent = Intent(this,CostPageActivity::class.java)
+        startActivity(intent)
     }
 }
