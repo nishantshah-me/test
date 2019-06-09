@@ -23,4 +23,15 @@
         android:textStyle="bold"
         android:textColor="@android:color/white"/>
 
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/small_padding"
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_search_black_24dp"/>
+
 </RelativeLayout>

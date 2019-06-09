@@ -58,6 +58,12 @@
     <string name="update">Update</string>
     <string name="cost_page">COST PAGE</string>
     <string name="generate_invoice">Generate Invoice</string>
+    <string name="str_from">From</string>
+    <string name="str_to">To</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="menu_order_date">Order Date</string>
+    <string name="menu_trial_date">Trial Date</string>
+    <string name="menu_delivery_date">Delivery Date</string>
 
     <!--order summary-->
     <string name="str_all_order">All Order</string>
@@ -65,4 +71,9 @@
     <string name="str_trial_done_order">Trial Done Order</string>
     <string name="str_delivered_order">Delivered Order</string>
     <string name="str_paid_order">Paid Order</string>
+
+    <!--invoice-->
+    <string name="str_invoice">Invoice</string>
+    <string name="str_total_advance">TOTAL ADVANCE</string>
+    <string name="str_final_amount">FINAL AMOUNT</string>
 </resources>

@@ -21,8 +21,8 @@
         <activity android:name=".view.clientorder.OrderListByCustomerActivity" />
         <activity android:name=".view.client.MeasurementActivity" />
         <activity android:name=".view.costing.CostPageActivity" />
-
         <activity android:name=".view.clientorder.OrderSummaryActivity" />
+        <activity android:name=".view.invoice.InvoiceActivity"></activity>
     </application>
 
 </manifest>

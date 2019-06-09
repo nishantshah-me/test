@@ -6,9 +6,11 @@ import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import example.com.vestir.ORDER_DATE_FORMAT
 import example.com.vestir.R
 import example.com.vestir.database.entity.ClientOrder
 import kotlinx.android.synthetic.main.row_order.view.*
+import java.text.SimpleDateFormat
 
 /**
  * Created by Nishant on 01-Jun-19.
@@ -19,6 +21,11 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
     private var selectedCount: Int = 0
     private var selectedOrders= ArrayList<ClientOrder>()
     private var selectedOrdersPosition = SparseBooleanArray()
+    private var originalList: List<ClientOrder>? = null
+
+    init {
+        originalList = orderList
+    }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         holder.bind(position)
@@ -79,6 +86,32 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
                     listener.onItemCheckChanged(selectedCount)
                 }
         }
+    }
+
+    fun filterByDate(dateType: String, fromDate: String, toDate: String){
+        if(dateType.isNotEmpty()){
+            val sdf = SimpleDateFormat(ORDER_DATE_FORMAT)
+            val from = sdf.parse(fromDate)
+            val to = sdf.parse(toDate)
+            val tempList: List<ClientOrder> = originalList!!.filter {
+                val date = when(dateType){
+                    context.getString(R.string.menu_trial_date) -> sdf.parse(it.trial)
+                    context.getString(R.string.menu_delivery_date) -> sdf.parse(it.delivery)
+                    else -> sdf.parse(it.order)
+                }
+                (date.compareTo(from)== 0) || (date.compareTo(to) == 0) ||
+                        (date.before(to) && date.after(from))
+            }
+            orderList = tempList
+        } else { orderList = originalList
+            orderList!!
+        }
+        notifyDataSetChanged()
+    }
+
+    fun resetOriginalList(){
+        orderList = originalList
+        notifyDataSetChanged()
     }
 
     interface OnOrderItemClickListener{

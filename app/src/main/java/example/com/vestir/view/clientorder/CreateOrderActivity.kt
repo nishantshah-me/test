@@ -33,27 +33,22 @@ class CreateOrderActivity : AppCompatActivity() {
             btnSubmit.text = getString(R.string.str_update)
             val order = intent.getSerializableExtra(ORDER_DATA) as ClientOrder
             showData(order)
+        } else {
+            etName.setText(intent.getStringExtra(SELECTED_CLIENT_NAME))
+            etName.isEnabled = false
         }
 
         btnSubmit.setOnClickListener { addOrder() }
         img_back.setOnClickListener { onBackPressed() }
         etorder.setOnClickListener {
-            hideKeyboard(etorder)
             showDatePicker("order")
         }
         etTrial.setOnClickListener {
-            hideKeyboard(etTrial)
             showDatePicker("trial")
         }
         etDelivery.setOnClickListener {
-            hideKeyboard(etDelivery)
             showDatePicker("delivery")
         }
-    }
-
-    private fun hideKeyboard(view: View){
-        val imm = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun showDatePicker(date: String){

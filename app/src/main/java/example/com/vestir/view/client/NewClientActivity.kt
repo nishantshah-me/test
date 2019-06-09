@@ -12,16 +12,15 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
-import example.com.vestir.R
 import example.com.vestir.database.AppDatabase
 import example.com.vestir.database.entity.Client
 import example.com.vestir.database.dao.ClientDao
 import kotlinx.android.synthetic.main.activity_new_client.*
 import android.widget.ArrayAdapter
 import com.google.gson.Gson
-import example.com.vestir.IS_FROM_NEW_CLIENT
-import example.com.vestir.ORDER_STATUS
-import example.com.vestir.SELECTED_CLIENT_NAME
+import example.com.vestir.*
+import example.com.vestir.database.dao.OrderDao
+import example.com.vestir.database.entity.ClientOrder
 import example.com.vestir.database.entity.Measurement
 import example.com.vestir.view.clientorder.OrderListByCustomerActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -31,6 +30,7 @@ import java.util.*
 class NewClientActivity : AppCompatActivity() {
 
     lateinit var clientDao: ClientDao
+    lateinit var clientOrder: OrderDao
     var client: Client =  Client()
     var clientList: List<Client> = ArrayList()
     var clientNames: MutableList<String>? = null
@@ -49,6 +49,7 @@ class NewClientActivity : AppCompatActivity() {
         clientNames = ArrayList()
 
         clientDao = AppDatabase.getInstance(this).clientDao()
+        clientOrder = AppDatabase.getInstance(this).orderDao()
 
         clientDao.getAllClient().observe(this, Observer {
             val size = it!!.size - 1
@@ -85,12 +86,25 @@ class NewClientActivity : AppCompatActivity() {
         }
 
         btnActiveOrders.setOnClickListener{
-
-            navigateToOrderList(getString(R.string.status_active))
+            val clientName = etName.text.toString().trim()
+            if(clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()){
+                val index = clientNames!!.indexOf(clientName)
+                val clientId = clientList[index].clientid
+                getOrderByClient(clientId, getString(R.string.status_active))
+            } else {
+                Toast.makeText(this@NewClientActivity, "Please select valid client", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnPastOrders.setOnClickListener{
-            navigateToOrderList(getString(R.string.status_paid))
+            val clientName = etName.text.toString().trim()
+            if(clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()) {
+                val index = clientNames!!.indexOf(clientName)
+                val clientId = clientList[index].clientid
+                getOrderByClient(clientId, getString(R.string.status_paid))
+            } else {
+                Toast.makeText(this, "Please select valid client", Toast.LENGTH_SHORT).show()
+            }
         }
 
         txtEditMeasurement.setOnClickListener {
@@ -107,9 +121,10 @@ class NewClientActivity : AppCompatActivity() {
         btnNewClient.visibility = View.GONE
     }
 
-    private fun navigateToOrderList(orderStatus: String){
+    private fun navigateToOrderList(clientId: Long, orderStatus: String){
         val intent = Intent(this, OrderListByCustomerActivity::class.java)
         intent.putExtra(SELECTED_CLIENT_NAME, etName.text.toString().trim())
+        intent.putExtra(SELECT_CLIENT_ID, clientId)
         intent.putExtra(ORDER_STATUS, orderStatus)
         intent.putExtra(IS_FROM_NEW_CLIENT, true)
         startActivity(intent)
@@ -155,6 +170,16 @@ class NewClientActivity : AppCompatActivity() {
 
     }
 
+    private fun getOrderByClient(clientId: Long, status: String){
+        clientOrder.getOrderListBasedOnClientAndStatus(clientId, status)
+                    .observe(this, Observer<List<ClientOrder>?> {
+                        if (it != null && it.isNotEmpty()){
+                            navigateToOrderList(clientId, status)
+                        } else {
+                            Toast.makeText(this@NewClientActivity, "No orders found", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+    }
 
     fun isvalidForm(): Boolean {
         if (TextUtils.isEmpty(etName.text)) {
