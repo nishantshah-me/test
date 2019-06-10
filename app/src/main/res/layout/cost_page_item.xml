@@ -5,15 +5,159 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/title_bg"
     android:elevation="4dp"
-    android:layout_margin="@dimen/std_padding"
+    app:cardCornerRadius="4dp"
+    android:layout_marginBottom="@dimen/std_padding"
+    android:layout_marginTop="@dimen/std_padding"
     app:cardBackgroundColor="@color/cardview_light_background"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/std_padding"
+        android:orientation="vertical">
+
+
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:id="@+id/imgDelete"
-        android:src="@drawable/ic_delete_forever_black_24dp" />
+        android:src="@drawable/ic_close" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/std_padding"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/style"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtStyle"
+            android:padding="@dimen/small_padding"
+            android:layout_marginLeft="@dimen/large_padding"
+            android:background="@drawable/title_bg"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/large_padding"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/expenses"/>
+
+        <EditText
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/etExpenses"
+           />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/std_padding">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"/>
+
+            <EditText
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/etTime"
+                android:layout_marginLeft="@dimen/std_padding"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/std_padding"
+                android:layout_weight="1"
+                android:text="hrs * 200 = "/>
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/std_padding">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/manual"/>
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_bg"
+                android:id="@+id/etManual"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/std_padding"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/std_padding">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/total"/>
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/etTotal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/std_padding">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/advance"/>
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/etAdvance"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

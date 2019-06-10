@@ -22,6 +22,7 @@ import example.com.vestir.database.entity.Client
 import example.com.vestir.view.invoice.InvoiceActivity
 import java.text.SimpleDateFormat
 import java.util.*
+import example.com.vestir.view.costing.CostPageActivity
 
 
 class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrderItemClickListener, PopupMenu.OnMenuItemClickListener {
@@ -296,5 +297,11 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
                 }
             }
         } else super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+    override fun onCostClick() {
+        val intent = Intent(this,CostPageActivity::class.java)
+        startActivity(intent)
     }
 }

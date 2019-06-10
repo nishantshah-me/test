@@ -25,4 +25,8 @@ class ClientOrder : Serializable {
     var final: String = "ok"
     var quote: Long = 0
     var cost: Long = 0
+    var advance: Long = 0
+    var costByHours : Long = 0
+    var manual : Long = 0
+    var expenses : Long = 0
 }
