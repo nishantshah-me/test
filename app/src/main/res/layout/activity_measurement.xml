@@ -42,8 +42,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -53,8 +51,6 @@
 
                 <EditText
                     android:id="@+id/etFL"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:inputType="numberDecimal"
@@ -69,8 +65,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -79,8 +73,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -96,8 +88,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -107,8 +97,6 @@
 
                 <EditText
                     android:id="@+id/etBL"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:inputType="numberDecimal"
@@ -123,8 +111,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -133,8 +119,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -150,8 +134,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -160,8 +142,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -177,8 +157,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -187,8 +165,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -204,8 +180,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -214,8 +188,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -231,8 +203,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -241,8 +211,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -258,8 +226,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -268,8 +234,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -285,8 +249,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -295,8 +257,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -312,8 +272,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -322,7 +280,7 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
+                    android:ems="3"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
@@ -347,8 +305,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -357,9 +313,8 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
+                    android:ems="3"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
@@ -374,8 +329,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -384,8 +337,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -401,8 +352,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -411,8 +360,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -428,8 +375,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -438,8 +383,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -455,8 +398,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -465,8 +406,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -482,8 +421,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -492,8 +429,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -509,8 +444,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -519,8 +452,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -536,8 +467,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -546,8 +475,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -570,8 +497,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -580,9 +505,8 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
+                    android:ems="3"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
@@ -597,8 +521,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -607,8 +529,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -624,8 +544,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -634,8 +552,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -651,8 +567,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -661,8 +575,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -678,8 +590,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -688,8 +598,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -705,8 +613,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -716,8 +622,6 @@
 
                 <EditText
                     android:id="@+id/etSL"
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:inputType="numberDecimal"
@@ -732,8 +636,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -742,8 +644,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -759,8 +659,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -769,8 +667,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -786,8 +682,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -796,8 +690,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
@@ -813,8 +705,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:background="@drawable/row_bg"
                     android:gravity="center"
@@ -823,8 +713,6 @@
                     android:textSize="@dimen/textsize_16sp" />
 
                 <EditText
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"

@@ -6,7 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.View
 
 import android.view.inputmethod.InputMethodManager
@@ -28,6 +30,7 @@ import java.util.*
 
 
 class NewClientActivity : AppCompatActivity() {
+
 
     lateinit var clientDao: ClientDao
     lateinit var clientOrder: OrderDao
@@ -85,6 +88,7 @@ class NewClientActivity : AppCompatActivity() {
             checkForNewOrUpdate()
         }
 
+
         btnActiveOrders.setOnClickListener{
             val clientName = etName.text.toString().trim()
             if(clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()){
@@ -141,7 +145,7 @@ class NewClientActivity : AppCompatActivity() {
     private fun addClient() {
         if (isvalidForm()) {
 
-            client.name = etName.text.toString()
+            client.name = etName.text.toString().toUpperCase()
             client.contact = etContact.text.toString().toLong()
             client.address = etAddress.text.toString()
             client.reference = etReference.text.toString()
@@ -165,7 +169,10 @@ class NewClientActivity : AppCompatActivity() {
                 Toast.makeText(this, "Client Added Successfully", Toast.LENGTH_SHORT).show()
 
             }
+
+            val intent = intent
             finish()
+            startActivity(intent)
         }
 
     }
@@ -175,8 +182,6 @@ class NewClientActivity : AppCompatActivity() {
                     .observe(this, Observer<List<ClientOrder>?> {
                         if (it != null && it.isNotEmpty()){
                             navigateToOrderList(clientId, status)
-                        } else {
-                            Toast.makeText(this@NewClientActivity, "No orders found", Toast.LENGTH_SHORT).show()
                         }
                     })
     }
@@ -187,12 +192,6 @@ class NewClientActivity : AppCompatActivity() {
             return false
         } else if (TextUtils.isEmpty(etContact.text) || etContact.text.length < 10) {
             etContact.setError("Please enter valid contact number")
-            return false
-        } else if (TextUtils.isEmpty(etAddress.text)) {
-            etAddress.setError("Please enter valid address")
-            return false
-        } else if (TextUtils.isEmpty(etReference.text)) {
-            etReference.setError("Please enter valid reference")
             return false
         }
 
@@ -209,5 +208,6 @@ class NewClientActivity : AppCompatActivity() {
             }
         }
     }
+
 }
 

@@ -2,8 +2,8 @@ package example.com.vestir.view.client
 
 import android.app.Activity
 import android.arch.lifecycle.Observer
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import com.google.gson.Gson
 import example.com.vestir.R
@@ -22,11 +22,13 @@ class MeasurementActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_measurement)
 
-        if (intent.extras != null)
-            clientId = intent.extras.getLong(CLIENT_ID)
+        if (intent.hasExtra(CLIENT_ID))
+            clientId = intent.getLongExtra(CLIENT_ID, 0)
 
-        AppDatabase.getInstance(this).measurementDao().getMeasurementByClientId(clientId).observe(this, Observer {
-            updateUi(it)
+        AppDatabase.getInstance(this).measurementDao()
+                .getMeasurementByClientId(clientId).observe(this, Observer {
+            if (it != null)
+                updateUi(it)
         })
 
         img_back.setOnClickListener { onBackPressed() }
@@ -102,7 +104,7 @@ class MeasurementActivity : AppCompatActivity() {
 
         if (!TextUtils.isEmpty(etBi.text)) measurement.biceps = etBi.text.toString().toFloat()
 
-        if (!TextUtils.isEmpty(etSL1.text)) measurement.short_sleeve_length = etCuf1.text.toString().toFloat()
+        if (!TextUtils.isEmpty(etSL1.text)) measurement.short_sleeve_length = etSL1.text.toString().toFloat()
 
         if (!TextUtils.isEmpty(etCuf1.text)) measurement.cuff1 = etCuf1.text.toString().toFloat()
 
