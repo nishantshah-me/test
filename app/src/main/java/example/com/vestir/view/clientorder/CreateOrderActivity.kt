@@ -9,6 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import example.com.vestir.*
+import example.com.vestir.R.id.*
 import example.com.vestir.database.AppDatabase
 import example.com.vestir.database.entity.ClientOrder
 import kotlinx.android.synthetic.main.activity_create_order.*

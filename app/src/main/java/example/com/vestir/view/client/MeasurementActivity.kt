@@ -134,6 +134,10 @@ class MeasurementActivity : AppCompatActivity() {
 
         val intent = intent
         intent.putExtra(MEASUREMENT, Gson().toJson(measurement))
+        if(clientId > 1){
+            measurement.clientId = clientId
+            AppDatabase.getInstance(this).measurementDao().updateMeasurement(measurement)
+        }
         setResult(Activity.RESULT_OK, intent)
 
     }

@@ -196,6 +196,7 @@
                     android:id="@+id/btnActiveOrders"
                     android:text="@string/active_norders"
                     android:padding="@dimen/small_padding"
+                    android:enabled="false"
                     android:background="@drawable/title_bg"/>
 
                 <Button
@@ -205,6 +206,7 @@
                     android:id="@+id/btnPastOrders"
                     android:text="@string/past_norders"
                     android:padding="@dimen/small_padding"
+                    android:enabled="false"
                     android:background="@drawable/title_bg"/>
 
             </LinearLayout>

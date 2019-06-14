@@ -158,8 +158,6 @@ class NewClientActivity : AppCompatActivity() {
             if (isUpdate) {
                 client.clientid = updateClientId
                 clientDao.updateClient(client)
-                measurement.clientId = client.clientid
-                AppDatabase.getInstance(this).measurementDao().updateMeasurement(measurement)
                 Toast.makeText(this, "Client Updated Successfully", Toast.LENGTH_SHORT).show()
             } else {
                 client.clientid = Calendar.getInstance().timeInMillis

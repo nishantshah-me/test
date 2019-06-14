@@ -22,9 +22,11 @@
         android:text="Measurement"/>
 
     <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/std_padding"
+        android:paddingTop="@dimen/std_padding"
+        android:paddingLeft="@dimen/std_padding"
         android:id="@+id/tableContainer"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:layout_marginTop="@dimen/std_padding"
@@ -258,6 +260,7 @@
 
                 <EditText
                     android:layout_column="2"
+                    android:ems="3"
                     android:background="@drawable/row_bg"
                     android:maxLength="8"
                     android:padding="4dp"
@@ -267,30 +270,6 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <TextView
-                    android:layout_column="1"
-                    android:background="@drawable/row_bg"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="Ch"
-                    android:textSize="@dimen/textsize_16sp" />
-
-                <EditText
-                    android:ems="3"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:background="@drawable/row_bg"
-                    android:maxLength="8"
-                    android:padding="4dp"
-                    android:id="@+id/etCh"
-                    android:inputType="numberDecimal"
-                    android:textSize="@dimen/textsize_16sp" />
-
-            </TableRow>
 
         </TableLayout>
 
@@ -728,6 +707,47 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chContainer"
+        android:paddingLeft="@dimen/std_padding"
+        app:layout_constraintTop_toBottomOf="@id/tableContainer"
+        >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_column="1"
+                android:background="@drawable/row_bg"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="4dp"
+                android:text="Ch"
+                android:textSize="@dimen/textsize_16sp" />
+
+            <EditText
+                android:ems="5"
+                android:id="@+id/etCh"
+                android:layout_column="2"
+                android:background="@drawable/row_bg"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:padding="4dp"
+                android:textSize="@dimen/textsize_16sp" />
+
+        </TableRow>
+    </TableLayout>
+
+    </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -735,6 +755,6 @@
         android:layout_margin="@dimen/large_padding"
         android:text="@string/str_submit"
         android:background="@drawable/title_bg"
-        app:layout_constraintTop_toBottomOf="@+id/tableContainer"/>
+        app:layout_constraintTop_toBottomOf="@+id/chContainer"/>
 
 </android.support.constraint.ConstraintLayout>
