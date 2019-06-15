@@ -8,16 +8,13 @@ import example.com.vestir.database.dao.ClientDao
 import example.com.vestir.database.dao.CostDao
 import example.com.vestir.database.dao.MeasurementDao
 import example.com.vestir.database.dao.OrderDao
-import example.com.vestir.database.entity.Client
-import example.com.vestir.database.entity.ClientOrder
-import example.com.vestir.database.entity.Cost
-import example.com.vestir.database.entity.Measurement
+import example.com.vestir.database.entity.*
 
 /**
  * Created by Nishant on 31-May-19.
  */
 
-@Database(entities = [(Client::class), (ClientOrder::class),(Measurement::class),(Cost::class)],version = 1)
+@Database(entities = [(Client::class), (ClientOrder::class),(Measurement::class),(Cost::class),(TimeSheet::class)],version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun clientDao(): ClientDao
 
