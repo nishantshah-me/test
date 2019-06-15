@@ -96,4 +96,10 @@
         <item>Parin</item>
         <item>XYZ</item>
     </string-array>
+
+    <string name="str_staff">STAFF</string>
+    <string name="str_date">DATE</string>
+    <string name="str_salary">SALARY</string>
+    <string name="str_paid">PAID</string>
+    <string name="str_add">ADD</string>
 </resources>

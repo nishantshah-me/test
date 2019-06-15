@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import example.com.vestir.IS_FROM_ORDER_SUMMARY
 import example.com.vestir.ORDER_STATUS
 import example.com.vestir.R
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 class OrderSummaryActivity : AppCompatActivity() {
 
     private lateinit var database: AppDatabase
+    private var toast: Toast?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +28,31 @@ class OrderSummaryActivity : AppCompatActivity() {
         database = AppDatabase.getInstance(this)
 
         img_back.setOnClickListener { onBackPressed() }
-        rl_all.setOnClickListener { navigateToOrderList("") }
-        rl_active.setOnClickListener { navigateToOrderList(getString(R.string.status_active)) }
-        rl_trial_done.setOnClickListener { navigateToOrderList(getString(R.string.status_trial_done)) }
-        rl_delivered.setOnClickListener { navigateToOrderList(getString(R.string.status_delivered)) }
-        rl_paid.setOnClickListener { navigateToOrderList(getString(R.string.status_paid)) }
+        rl_all.setOnClickListener {
+            if(txt_all_order.text.toString() != "0")
+                navigateToOrderList("")
+            else showMessage()
+        }
+        rl_active.setOnClickListener {
+            if(txt_active_order.text.toString() != "0")
+                navigateToOrderList(getString(R.string.status_active))
+            else showMessage()
+        }
+        rl_trial_done.setOnClickListener {
+            if(txt_trial_done_order.text.toString() != "0")
+                navigateToOrderList(getString(R.string.status_trial_done))
+            else showMessage()
+        }
+        rl_delivered.setOnClickListener {
+            if(txt_delivered_order.text.toString() != "0")
+                navigateToOrderList(getString(R.string.status_delivered))
+            else showMessage()
+        }
+        rl_paid.setOnClickListener {
+            if(txt_paid_order.text.toString() != "0")
+                navigateToOrderList(getString(R.string.status_paid))
+            else showMessage()
+        }
     }
 
     override fun onResume() {
@@ -50,6 +72,15 @@ class OrderSummaryActivity : AppCompatActivity() {
         database.orderDao().getOrderListCountBasedOnStatus(getString(R.string.status_paid)).observe(this, Observer<Int> {
             txt_paid_order.text = it.toString()
         })
+    }
+
+    private fun showMessage(){
+        if(toast != null && toast!!.view.isShown){
+            toast!!.setText("No order found")
+        } else {
+            toast = Toast.makeText(this, "No order found", Toast.LENGTH_SHORT)
+            toast!!.show()
+        }
     }
 
     private fun navigateToOrderList(status: String){

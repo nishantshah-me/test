@@ -57,6 +57,17 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
 
         etName.onItemClickListener = getAutoCompleteViewItemSelectListener()
 
+        etName.setOnFocusChangeListener { v, hasFocus ->
+            if(!hasFocus){
+                val index = clientNameList.indexOf(etName.text.toString())
+                if(index < 0){
+                    btnSubmit.visibility = View.GONE
+                } else {
+                    btnSubmit.visibility = View.VISIBLE
+                }
+            }
+        }
+
         setTextToButton(getString(R.string.new_order))
         adapter = OrderListAdapter(this, this, null)
         rv_order_list.adapter = adapter
@@ -254,7 +265,8 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
                     if(counter == selectedOrderList.size){
                         /*Toast.makeText(this@OrderListByCustomerActivity,
                                 "Not implemented.", Toast.LENGTH_SHORT).show()*/
-                        startActivity(Intent(this, InvoiceActivity::class.java))
+                        startActivity(Intent(this, InvoiceActivity::class.java)
+                                .apply { putExtra("order_list", selectedOrderList) })
                     } else {
                         Toast.makeText(this@OrderListByCustomerActivity,
                                 "Please select order with same client.", Toast.LENGTH_SHORT).show()
