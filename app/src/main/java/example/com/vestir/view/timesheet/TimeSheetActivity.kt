@@ -27,14 +27,6 @@ class TimeSheetActivity : AppCompatActivity() {
         imgAddTimeSheet.setOnClickListener {
             addTimeSheet()
         }
-        view.setOnClickListener {
-            for (i in 0 until llTimeSheetRow.childCount){
-                if( i == imgDelCard.tag){
-                    llTimeSheetRow.removeView(llTimeSheetRow.getChildAt(i))
-                    count--
-                }
-            }
-        }
     }
 
     fun addTimeSheet(){
@@ -46,5 +38,14 @@ class TimeSheetActivity : AppCompatActivity() {
 
         params.topMargin = 16
         llTimeSheetRow.addView(view,params)
+
+        view.imgDelCard.setOnClickListener {
+            for (i in 0 until llTimeSheetRow.childCount){
+                if( i == view.imgDelCard.tag){
+                    llTimeSheetRow.removeView(llTimeSheetRow.getChildAt(i))
+                    count--
+                }
+            }
+        }
     }
 }
