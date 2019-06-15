@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtStyle"
+            android:textSize="@dimen/textsize_16sp"
             android:padding="@dimen/small_padding"
             android:layout_marginLeft="@dimen/large_padding"
             android:background="@drawable/title_bg"/>
@@ -111,6 +112,10 @@
             <EditText
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/small_padding"
+                android:paddingRight="@dimen/small_padding"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 android:background="@drawable/title_bg"
                 android:id="@+id/etManual"/>
         </LinearLayout>

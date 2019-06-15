@@ -17,12 +17,14 @@ import kotlinx.android.synthetic.main.activity_order_list_by_customer.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import android.widget.AdapterView
 import android.widget.PopupMenu
+import com.google.gson.Gson
 import example.com.vestir.*
 import example.com.vestir.database.entity.Client
 import example.com.vestir.view.invoice.InvoiceActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import example.com.vestir.view.costing.CostPageActivity
+import kotlin.collections.ArrayList
 
 
 class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrderItemClickListener, PopupMenu.OnMenuItemClickListener {
@@ -254,7 +256,11 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
                     if(counter == selectedOrderList.size){
                         /*Toast.makeText(this@OrderListByCustomerActivity,
                                 "Not implemented.", Toast.LENGTH_SHORT).show()*/
-                        startActivity(Intent(this, InvoiceActivity::class.java))
+                       // startActivity(Intent(this, InvoiceActivity::class.java))
+
+                        val intent = Intent(this,CostPageActivity::class.java)
+                        intent.putExtra(SELECTED_ORDERS,selectedOrderList)
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this@OrderListByCustomerActivity,
                                 "Please select order with same client.", Toast.LENGTH_SHORT).show()
@@ -300,8 +306,9 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
     }
 
 
-    override fun onCostClick() {
+    override fun onCostClick(selectedOrders: ArrayList<ClientOrder>) {
         val intent = Intent(this,CostPageActivity::class.java)
+        intent.putExtra(SELECTED_ORDERS,selectedOrders)
         startActivity(intent)
     }
 }

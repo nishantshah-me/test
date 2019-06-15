@@ -87,7 +87,7 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
                 }
 
             itemView.btn_cost.setOnClickListener {
-                listener.onCostClick()
+                listener.onCostClick(selectedOrders)
             }
         }
     }
@@ -120,6 +120,6 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
 
     interface OnOrderItemClickListener{
         fun onItemCheckChanged(checkItemCount: Int)
-        fun onCostClick()
+        fun onCostClick(selectedOrders: ArrayList<ClientOrder>)
     }
 }
