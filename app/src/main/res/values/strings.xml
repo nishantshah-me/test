@@ -114,4 +114,18 @@
         <item>others</item>
     </string-array>
 
+    <!--Transaction-->
+    <string name="particular">PARTICULAR</string>
+    <string-array name="particular_type">
+        <item>Fabric</item>
+        <item>Lining</item>
+        <item>Stiching</item>
+        <item>Laces</item>
+        <item>Embroidery</item>
+        <item>Others</item>
+        <item>Payment</item>
+        <item>Salary</item>
+        <item>Vestir Expense</item>
+    </string-array>
+
 </resources>

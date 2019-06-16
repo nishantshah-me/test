@@ -202,15 +202,21 @@ class NewClientActivity : AppCompatActivity() {
             }
 
             if (isUpdate) {
-                client.clientid = updateClientId
-                clientDao.updateClient(client)
-                Toast.makeText(this, "Client Updated Successfully", Toast.LENGTH_SHORT).show()
+               updateClient()
             } else {
-                client.clientid = Calendar.getInstance().timeInMillis
-                clientDao.insertClient(client)
-                measurement.clientId = client.clientid
-                AppDatabase.getInstance(this).measurementDao().insertMeasurement(measurement)
-                Toast.makeText(this, "Client Added Successfully", Toast.LENGTH_SHORT).show()
+                if (clientList.size > 0) {
+                    for (i in 0..clientList.size - 1) {
+                        if (client.name.equals(clientList[i].name))
+                            Toast.makeText(this, "Client Name Already present", Toast.LENGTH_SHORT).show()
+                        else {
+                            insertClient()
+                        }
+
+                    }
+                } else {
+                    insertClient()
+                }
+
             }
 
         }
@@ -247,6 +253,20 @@ class NewClientActivity : AppCompatActivity() {
                 measurement = gson.fromJson(msmtKey, Measurement::class.java)
             }
         }
+    }
+
+    fun insertClient() {
+        client.clientid = Calendar.getInstance().timeInMillis
+        clientDao.insertClient(client)
+        measurement.clientId = client.clientid
+        AppDatabase.getInstance(this).measurementDao().insertMeasurement(measurement)
+        Toast.makeText(this, "Client Added Successfully", Toast.LENGTH_SHORT).show()
+    }
+
+    fun updateClient() {
+        client.clientid = updateClientId
+        clientDao.updateClient(client)
+        Toast.makeText(this, "Client Updated Successfully", Toast.LENGTH_SHORT).show()
     }
 
 }
