@@ -2,11 +2,8 @@ package example.com.vestir.database.dao
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import android.arch.persistence.room.*
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Update
 import example.com.vestir.database.entity.Client
 
 /**
@@ -14,7 +11,7 @@ import example.com.vestir.database.entity.Client
  */
 @Dao
 interface ClientDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertClient(client: Client)
 
     @Query("Select * from Client")
