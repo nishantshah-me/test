@@ -42,6 +42,10 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun addTransactionRow(){
+        llSalary.visibility = View.GONE
+        llTransaction.visibility = View.VISIBLE
+        llVestExp.visibility = View.GONE
+
         val inflater = LayoutInflater.from(this)
         view =  inflater.inflate(R.layout.layout_generic_transaction,null)
         val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -51,8 +55,6 @@ class TransactionActivity : AppCompatActivity() {
         llTransaction.addView(view,params)
 
         view.imgDelCard.setOnClickListener {
-
-
             val parentView = ((it.parent as LinearLayout).parent as CardView).parent as LinearLayout
             val index = llTransaction.indexOfChild(parentView)
             llTransaction.removeViewAt(index)
@@ -60,23 +62,31 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun addSalaryRow(){
+        llSalary.visibility = View.VISIBLE
+        llTransaction.visibility = View.GONE
+        llVestExp.visibility = View.GONE
+
         val inflater = LayoutInflater.from(this)
         view =  inflater.inflate(R.layout.layout_staff_salary,null)
         val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         view.isClickable = true
 
         params.topMargin = 16
-        llTransaction.addView(view,params)
+        llSalary.addView(view,params)
 
     }
 
     private fun addVestExpRow(){
+        llSalary.visibility = View.GONE
+        llTransaction.visibility = View.GONE
+        llVestExp.visibility = View.VISIBLE
+
         val inflater = LayoutInflater.from(this)
         view =  inflater.inflate(R.layout.layout_vestir_expense,null)
         val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         view.isClickable = true
 
         params.topMargin = 16
-        llTransaction.addView(view,params)
+        llVestExp.addView(view,params)
     }
 }

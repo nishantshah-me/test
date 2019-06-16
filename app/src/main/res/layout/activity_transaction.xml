@@ -76,6 +76,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/std_padding"
                     android:orientation="vertical" />
+                <LinearLayout
+                    android:id="@+id/llSalary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/std_padding"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/llVestExp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/std_padding"
+                    android:orientation="vertical" />
 
                 <ImageView
                     android:id="@+id/imgAddTransaction"
