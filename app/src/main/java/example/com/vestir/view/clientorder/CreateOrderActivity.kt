@@ -129,7 +129,10 @@ class CreateOrderActivity : AppCompatActivity() {
                 database.orderDao().updateOrder(order)
                 message = "Order updated successfully"
             } else {
-                database.orderDao().addOrder(order)
+                val addedOrder = database.orderDao().getOrderBasedOnClientAndStyle(selectedClientId, order.style)
+                if(addedOrder == null)
+                    database.orderDao().addOrder(order)
+                else message = "Order already present."
             }
             isEdited = true
             Toast.makeText(this@CreateOrderActivity, message, Toast.LENGTH_SHORT).show()

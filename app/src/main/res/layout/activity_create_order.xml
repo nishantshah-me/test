@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:textSize="@dimen/textsize_16sp"
-                    android:inputType="text" />
+                    android:inputType="textCapCharacters" />
             </LinearLayout>
 
             <LinearLayout

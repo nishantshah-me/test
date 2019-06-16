@@ -187,16 +187,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.6">
 
-                    <TextView
-                        android:id="@+id/txt_add"
+                    <EditText
+                        android:id="@+id/edt_add"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="1000"
                         android:singleLine="true"
                         android:ellipsize="end"
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
                         android:paddingLeft="2dp"
+                        android:inputType="number"
                         android:textColor="@android:color/black"
                         android:background="@drawable/title_bg"
                         android:textSize="@dimen/textsize_16sp"

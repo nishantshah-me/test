@@ -6,7 +6,9 @@ import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
@@ -59,16 +61,28 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
 
         etName.onItemClickListener = getAutoCompleteViewItemSelectListener()
 
-        etName.setOnFocusChangeListener { v, hasFocus ->
-            if(!hasFocus){
+        etName.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
                 val index = clientNameList.indexOf(etName.text.toString())
-                if(index < 0){
-                    btnSubmit.visibility = View.GONE
-                } else {
-                    btnSubmit.visibility = View.VISIBLE
+                if(index >= 0){
+                    etName.setSelection(index)
+                    val selectedClient = clientList!![index]
+                    getOrderByClient(selectedClient.clientid)
+                    if(isFromOrderSummary){
+                        btnSubmit.visibility = View.GONE
+                    } else
+                        btnSubmit.visibility = View.VISIBLE
                 }
             }
-        }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                btnSubmit.visibility = View.GONE
+                rv_order_list.adapter = null
+                setTextToButton(getString(R.string.new_order))
+            }
+        })
 
         setTextToButton(getString(R.string.new_order))
         adapter = OrderListAdapter(this, this, null)
@@ -79,9 +93,13 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
         if(isFromOrderSummary){
             getDefaultOrderList()
             setSearchView()
+            btnSubmit.visibility = View.GONE
         } else if(isFromNewClient){
             etName.setText(intent.getStringExtra(SELECTED_CLIENT_NAME))
             getOrderByClient(intent.getLongExtra(SELECT_CLIENT_ID, 0))
+            btnSubmit.visibility = View.VISIBLE
+        } else {
+            btnSubmit.visibility = View.GONE
         }
     }
 
@@ -163,6 +181,9 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
 
     private fun getAutoCompleteViewItemSelectListener(): AdapterView.OnItemClickListener{
         return AdapterView.OnItemClickListener { parent, _, position, _ ->
+            if(isFromOrderSummary)
+                btnSubmit.visibility = View.GONE
+            else btnSubmit.visibility = View.VISIBLE
             if(clientList != null && clientList!!.isNotEmpty()){
                 val clientName = parent.getItemAtPosition(position).toString()
                 val index = clientNameList.indexOf(clientName)
@@ -218,17 +239,37 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
 
     private fun sortListBasedOnStatus(status: String, list: ArrayList<ClientOrder>): ArrayList<ClientOrder>{
         when(status){
-            getString(R.string.status_active)-> list.sortBy { it.trial }
-            getString(R.string.status_trial_done)-> list.sortBy { it.delivery }
-            getString(R.string.status_delivered)-> list.sortBy { it.order }
-            getString(R.string.status_paid)-> list.sortBy { it.order }
-            else -> list.sortBy { it.order }
+            getString(R.string.status_active)-> list.sortByDescending { it.trial }
+            getString(R.string.status_trial_done)-> list.sortByDescending { it.delivery }
+            getString(R.string.status_delivered)-> list.sortByDescending { it.order }
+            getString(R.string.status_paid)-> list.sortByDescending { it.order }
+            else -> {
+                val activeOrderList = ArrayList<ClientOrder>()
+                val passedOrderList = ArrayList<ClientOrder>()
+                list.forEach {
+                    if(it.status != getString(R.string.status_paid))
+                        activeOrderList.add(it)
+                    else passedOrderList.add(it)
+                }
+                activeOrderList.sortByDescending { it.order }
+                passedOrderList.sortByDescending { it.order }
+                list.clear()
+                if(activeOrderList.isNotEmpty())
+                    list.addAll(activeOrderList)
+                if(passedOrderList.isNotEmpty())
+                    list.addAll(passedOrderList)
+            }
         }
-        list.reverse()
         return list
     }
 
+    override fun onResume() {
+        super.onResume()
+        btnSubmit.isEnabled = true
+    }
+
     private fun onSubmitButtonClick(){
+        btnSubmit.isEnabled = false
         when (btnSubmit.text.toString()) {
             getString(R.string.new_order) -> {
                 val nameSelected = etName.text.toString().trim()
@@ -284,6 +325,12 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
             else -> getString(R.string.open_cost_page)
         }
         setTextToButton(btnText)
+        if(isFromOrderSummary) {
+            if(checkItemCount == 0)
+                btnSubmit.visibility = View.GONE
+            else btnSubmit.visibility = View.VISIBLE
+        }
+        else btnSubmit.visibility = View.VISIBLE
     }
 
     private fun getIntentData(){

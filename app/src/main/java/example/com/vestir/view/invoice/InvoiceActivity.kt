@@ -50,6 +50,7 @@ class InvoiceActivity : AppCompatActivity() {
     }
 
     private fun shareInvoice(){
+        rl_progressbar.visibility = View.VISIBLE
         cl_invoice.post {
             try {
                 val bitmap = Bitmap.createBitmap(cl_invoice.measuredWidth, cl_invoice.measuredHeight,
@@ -63,15 +64,15 @@ class InvoiceActivity : AppCompatActivity() {
                 val file = File("$dir/ORDER_SHARE.jpeg")
                 val outputStream = FileOutputStream(file)
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-
+                rl_progressbar.visibility = View.GONE
                 val uri = Uri.fromFile(file)
-
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "image/*"
                 //intent.`package` = "com.whatsapp"
                 intent.putExtra(android.content.Intent.EXTRA_STREAM, uri)
                 startActivity(Intent.createChooser(intent, "Share with"))
             } catch (e: Exception){
+                rl_progressbar.visibility = View.GONE
                 Toast.makeText(this, "Something went wrong...", Toast.LENGTH_SHORT).show()
             }
         }

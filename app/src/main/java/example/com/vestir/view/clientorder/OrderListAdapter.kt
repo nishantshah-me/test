@@ -98,6 +98,12 @@ class OrderListAdapter(var context: Context, var listener: OnOrderItemClickListe
             val from = sdf.parse(fromDate)
             val to = sdf.parse(toDate)
             val tempList: List<ClientOrder> = originalList!!.filter {
+                when(dateType){
+                    context.getString(R.string.menu_trial_date) -> it.trial != ""
+                    context.getString(R.string.menu_delivery_date) -> it.delivery != ""
+                    else -> it.order != ""
+                }
+            }.filter {
                 val date = when(dateType){
                     context.getString(R.string.menu_trial_date) -> sdf.parse(it.trial)
                     context.getString(R.string.menu_delivery_date) -> sdf.parse(it.delivery)
