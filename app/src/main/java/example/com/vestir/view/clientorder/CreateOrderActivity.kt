@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import example.com.vestir.*
 import example.com.vestir.R.id.*
@@ -35,11 +37,21 @@ class CreateOrderActivity : AppCompatActivity() {
             btnSubmit.text = getString(R.string.str_update)
             val order = intent.getSerializableExtra(ORDER_DATA) as ClientOrder
             showData(order)
+            rl_status.setOnClickListener { spnStatus.performClick() }
         } else {
+            txt_status.text = getString(R.string.status_active)
             spnStatus.isEnabled = false
             etName.text = intent.getStringExtra(SELECTED_CLIENT_NAME)
             val sdf = SimpleDateFormat(ORDER_DATE_FORMAT)
             etorder.text = sdf.format(Calendar.getInstance().time)
+        }
+
+        spnStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                txt_status.text = parent.getItemAtPosition(position).toString()
+            }
         }
 
         btnSubmit.setOnClickListener { addOrder() }
@@ -105,7 +117,7 @@ class CreateOrderActivity : AppCompatActivity() {
                 name = etName.text.toString()
                 style = etStyle.text.toString()
                 description = etDesc.text.toString()
-                status = spnStatus.selectedItem.toString()
+                status = txt_status.text.toString()
                 order = etorder.text.toString()
                 trial = etTrial.text.toString()
                 delivery = etDelivery.text.toString()

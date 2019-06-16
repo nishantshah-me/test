@@ -6,15 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import example.com.vestir.R
+import example.com.vestir.database.entity.ClientOrder
 import kotlinx.android.synthetic.main.row_order_invoice.view.*
 
 /**
  * Created by Nishant on 09-Jun-19.
  */
-class InvoiceListAdapter(val context: Context):
+class InvoiceListAdapter(val context: Context, private val orderList: ArrayList<ClientOrder>):
         RecyclerView.Adapter<InvoiceListAdapter.InvoiceViewHolder>() {
     override fun onBindViewHolder(holder: InvoiceViewHolder, position: Int) {
-        holder.onBind(position)
+        holder.onBind(orderList[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): InvoiceViewHolder {
@@ -22,13 +23,13 @@ class InvoiceListAdapter(val context: Context):
         return InvoiceViewHolder(view)
     }
 
-    override fun getItemCount(): Int = 20
+    override fun getItemCount(): Int = orderList.size
 
     inner class InvoiceViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        fun onBind(position: Int){
-            itemView.txt_order_style.text = "style ${position+1}"
-            itemView.txt_order_cost.text = "1000 RS"
+        fun onBind(order: ClientOrder){
+            itemView.txt_order_style.text = order.style
+            itemView.txt_order_cost.text = "${order.cost} Rs"
         }
     }
 }

@@ -38,6 +38,7 @@
                     android:paddingBottom="6dp"
                     android:text="Client name"
                     android:layout_marginLeft="30dp"
+                    android:paddingRight="30dp"
                     android:gravity="center"
                     android:singleLine="true"
                     android:ellipsize="end"

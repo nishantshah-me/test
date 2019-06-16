@@ -59,6 +59,17 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
 
         etName.onItemClickListener = getAutoCompleteViewItemSelectListener()
 
+        etName.setOnFocusChangeListener { v, hasFocus ->
+            if(!hasFocus){
+                val index = clientNameList.indexOf(etName.text.toString())
+                if(index < 0){
+                    btnSubmit.visibility = View.GONE
+                } else {
+                    btnSubmit.visibility = View.VISIBLE
+                }
+            }
+        }
+
         setTextToButton(getString(R.string.new_order))
         adapter = OrderListAdapter(this, this, null)
         rv_order_list.adapter = adapter
@@ -254,10 +265,6 @@ class OrderListByCustomerActivity : AppCompatActivity(), OrderListAdapter.OnOrde
                             .takeWhile { firstOrder.name == it.name }
                             .count();
                     if(counter == selectedOrderList.size){
-                        /*Toast.makeText(this@OrderListByCustomerActivity,
-                                "Not implemented.", Toast.LENGTH_SHORT).show()*/
-                       // startActivity(Intent(this, InvoiceActivity::class.java))
-
                         val intent = Intent(this,CostPageActivity::class.java)
                         intent.putExtra(SELECTED_ORDERS,selectedOrderList)
                         startActivity(intent)

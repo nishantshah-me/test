@@ -96,4 +96,22 @@
         <item>Parin</item>
         <item>XYZ</item>
     </string-array>
+
+    <string name="str_salary">SALARY</string>
+    <string name="str_paid">PAID</string>
+    <string name="str_add">ADD</string>
+    <string name="str_type">TYPE</string>
+    <string name="str_mode">MODE</string>
+    <string name="str_place">PLACE</string>
+    <string name="str_cash">CASH</string>
+    <string name="str_online">ONLINE</string>
+
+    <string-array name="vestire_enpense_type">
+        <item>Rent</item>
+        <item>Travel</item>
+        <item>electricity</item>
+        <item>Inhouse</item>
+        <item>others</item>
+    </string-array>
+
 </resources>

@@ -60,6 +60,7 @@ class TimeSheetActivity : AppCompatActivity() {
 
         view.imgDelCard.setOnClickListener {
 
+
             val parentView = ((it.parent as LinearLayout).parent as CardView).parent as LinearLayout
             val index = llTimeSheetRow.indexOfChild(parentView)
             llTimeSheetRow.removeViewAt(index)
