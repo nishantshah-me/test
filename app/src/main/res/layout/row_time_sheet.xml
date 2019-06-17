@@ -42,6 +42,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
+                    android:inputType="textCapSentences"
                     android:background="@drawable/title_bg"
                     android:padding="@dimen/small_padding" />
 
@@ -92,6 +93,7 @@
                     android:id="@+id/etUnit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:layout_weight="1.5" />
 
                 <TextView

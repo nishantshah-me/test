@@ -6,9 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
-import android.text.TextWatcher
 import android.view.View
 
 import android.view.inputmethod.InputMethodManager
@@ -34,12 +32,12 @@ class NewClientActivity : AppCompatActivity() {
 
     lateinit var clientDao: ClientDao
     lateinit var clientOrder: OrderDao
-    var client: Client =  Client()
+    var client: Client = Client()
     var clientList: List<Client> = ArrayList()
     var clientNames: MutableList<String>? = null
     var measurement = Measurement()
     private var isUpdate: Boolean = false
-    private var updateClientId : Long = 0
+    private var updateClientId: Long = 0
     private val REQUEST_CODE = 100
     val CLIENT_ID = "clientId"
     val MEASUREMENT = "measurement"
@@ -54,10 +52,20 @@ class NewClientActivity : AppCompatActivity() {
         clientDao = AppDatabase.getInstance(this).clientDao()
         clientOrder = AppDatabase.getInstance(this).orderDao()
 
+        img_search.visibility = View.VISIBLE
+        img_search.setImageResource(R.drawable.ic_refresh)
+        img_search.setOnClickListener {
+            etName.setText("")
+            etContact.setText("")
+            etAddress.setText("")
+            etReference.setText("")
+        }
+
+
         clientDao.getAllClient().observe(this, Observer {
             val size = it!!.size - 1
             for (i in 0..size) {
-                clientNames?.add(i, it.get(i).name.toString())
+                clientNames?.add(i, it.get(i).name)
             }
             clientList = it
 
@@ -78,20 +86,22 @@ class NewClientActivity : AppCompatActivity() {
             updateClientId = clientList[indexOf].clientid
             isUpdate = true;
 
+            getOrderStatus(updateClientId)
+
         }
 
         btnSubmit.setOnClickListener({ addClient() })
 
         img_back.setOnClickListener { onBackPressed() }
 
-        btnNewClient.setOnClickListener{
+        btnNewClient.setOnClickListener {
             checkForNewOrUpdate()
         }
 
 
-        btnActiveOrders.setOnClickListener{
+        btnActiveOrders.setOnClickListener {
             val clientName = etName.text.toString().trim()
-            if(clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()){
+            if (clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()) {
                 val index = clientNames!!.indexOf(clientName)
                 val clientId = clientList[index].clientid
                 getOrderByClient(clientId, getString(R.string.status_active))
@@ -100,9 +110,9 @@ class NewClientActivity : AppCompatActivity() {
             }
         }
 
-        btnPastOrders.setOnClickListener{
+        btnPastOrders.setOnClickListener {
             val clientName = etName.text.toString().trim()
-            if(clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()) {
+            if (clientNames != null && clientNames!!.contains(clientName) && clientList.isNotEmpty()) {
                 val index = clientNames!!.indexOf(clientName)
                 val clientId = clientList[index].clientid
                 getOrderByClient(clientId, getString(R.string.status_paid))
@@ -112,11 +122,47 @@ class NewClientActivity : AppCompatActivity() {
         }
 
         txtEditMeasurement.setOnClickListener {
-            val intent = Intent(this@NewClientActivity,MeasurementActivity::class.java)
+            val intent = Intent(this@NewClientActivity, MeasurementActivity::class.java)
             intent.putExtra(CLIENT_ID, updateClientId)
-            startActivityForResult(intent,REQUEST_CODE)
+            startActivityForResult(intent, REQUEST_CODE)
         }
 
+    }
+
+    private fun getOrderStatus(updateClientId: Long) {
+        clientOrder.getOrderListCountByClientAndStatus(updateClientId, getString(R.string.status_paid))
+                .observe(this, Observer { it ->
+                    if (it != null) {
+                        if (it > 0)
+                            btnPastOrders.isEnabled = true
+
+                    }
+                })
+
+        clientOrder.getOrderListCountByClientAndStatus(updateClientId, getString(R.string.status_active))
+                .observe(this, Observer { it ->
+                    if (it != null) {
+                        if (it > 0)
+                            btnActiveOrders.isEnabled = true
+
+                    }
+                })
+        clientOrder.getOrderListCountByClientAndStatus(updateClientId, getString(R.string.status_trial_done))
+                .observe(this, Observer { it ->
+                    if (it != null) {
+                        if (it > 0)
+                            btnActiveOrders.isEnabled = true
+
+                    }
+                })
+        clientOrder.getOrderListCountByClientAndStatus(updateClientId, getString(R.string.status_delivered))
+                .observe(this, Observer { it ->
+                    if (it != null) {
+                        if (it > 0)
+                            btnActiveOrders.isEnabled = true
+
+                    }
+                })
     }
 
     private fun checkForNewOrUpdate() {
@@ -125,7 +171,7 @@ class NewClientActivity : AppCompatActivity() {
         btnNewClient.visibility = View.GONE
     }
 
-    private fun navigateToOrderList(clientId: Long, orderStatus: String){
+    private fun navigateToOrderList(clientId: Long, orderStatus: String) {
         val intent = Intent(this, OrderListByCustomerActivity::class.java)
         intent.putExtra(SELECTED_CLIENT_NAME, etName.text.toString().trim())
         intent.putExtra(SELECT_CLIENT_ID, clientId)
@@ -150,38 +196,40 @@ class NewClientActivity : AppCompatActivity() {
             client.address = etAddress.text.toString()
             client.reference = etReference.text.toString()
 
-             clientList.forEach {
-                 client.clientid = updateClientId
-                 isUpdate = it.clientid.equals(client.clientid)
-             }
+            clientList.forEach {
+                client.clientid = updateClientId
+                isUpdate = it.clientid.equals(client.clientid)
+            }
 
             if (isUpdate) {
-                client.clientid = updateClientId
-                clientDao.updateClient(client)
-                Toast.makeText(this, "Client Updated Successfully", Toast.LENGTH_SHORT).show()
+               updateClient()
             } else {
-                client.clientid = Calendar.getInstance().timeInMillis
-                clientDao.insertClient(client)
-                measurement.clientId = client.clientid
-                AppDatabase.getInstance(this).measurementDao().insertMeasurement(measurement)
-                Toast.makeText(this, "Client Added Successfully", Toast.LENGTH_SHORT).show()
+                if (clientList.size > 0) {
+                    for (i in 0..clientList.size - 1) {
+                        if (client.name.equals(clientList[i].name))
+                            Toast.makeText(this, "Client Name Already present", Toast.LENGTH_SHORT).show()
+                        else {
+                            insertClient()
+                        }
+
+                    }
+                } else {
+                    insertClient()
+                }
 
             }
 
-            val intent = intent
-            finish()
-            startActivity(intent)
         }
 
     }
 
-    private fun getOrderByClient(clientId: Long, status: String){
+    private fun getOrderByClient(clientId: Long, status: String) {
         clientOrder.getOrderListBasedOnClientAndStatus(clientId, status)
-                    .observe(this, Observer<List<ClientOrder>?> {
-                        if (it != null && it.isNotEmpty()){
-                            navigateToOrderList(clientId, status)
-                        }
-                    })
+                .observe(this, Observer<List<ClientOrder>?> {
+                    if (it != null && it.isNotEmpty()) {
+                        navigateToOrderList(clientId, status)
+                    }
+                })
     }
 
     fun isvalidForm(): Boolean {
@@ -198,13 +246,27 @@ class NewClientActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            if(data != null){
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
                 val gson = Gson()
                 val msmtKey = data.getStringExtra(MEASUREMENT)
-                measurement = gson.fromJson(msmtKey,Measurement::class.java)
+                measurement = gson.fromJson(msmtKey, Measurement::class.java)
             }
         }
+    }
+
+    fun insertClient() {
+        client.clientid = Calendar.getInstance().timeInMillis
+        clientDao.insertClient(client)
+        measurement.clientId = client.clientid
+        AppDatabase.getInstance(this).measurementDao().insertMeasurement(measurement)
+        Toast.makeText(this, "Client Added Successfully", Toast.LENGTH_SHORT).show()
+    }
+
+    fun updateClient() {
+        client.clientid = updateClientId
+        clientDao.updateClient(client)
+        Toast.makeText(this, "Client Updated Successfully", Toast.LENGTH_SHORT).show()
     }
 
 }

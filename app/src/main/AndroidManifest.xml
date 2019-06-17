@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="example.com.vestir">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -25,8 +25,9 @@
         <activity android:name=".view.client.MeasurementActivity" />
         <activity android:name=".view.costing.CostPageActivity" />
         <activity android:name=".view.clientorder.OrderSummaryActivity" />
-        <activity android:name=".view.invoice.InvoiceActivity"></activity>
-        <activity android:name=".view.timesheet.TimeSheetActivity"></activity>
+        <activity android:name=".view.invoice.InvoiceActivity" />
+        <activity android:name=".view.timesheet.TimeSheetActivity" />
+        <activity android:name=".view.transaction.TransactionActivity"/>
     </application>
 
 </manifest>
