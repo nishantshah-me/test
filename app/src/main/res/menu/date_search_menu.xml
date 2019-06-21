@@ -9,4 +9,7 @@
     <item
         android:id="@+id/delivery_date"
         android:title="@string/menu_delivery_date"/>
+    <item
+        android:id="@+id/client_name"
+        android:title="@string/menu_search_by_client_name"/>
 </menu>

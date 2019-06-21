@@ -6,18 +6,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.view.MotionEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import example.com.vestir.*
-import example.com.vestir.R.id.*
 import example.com.vestir.database.AppDatabase
 import example.com.vestir.database.entity.ClientOrder
 import example.com.vestir.view.client.MeasurementActivity
+import example.com.vestir.view.costing.CostPageActivity
 import kotlinx.android.synthetic.main.activity_create_order.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class CreateOrderActivity : AppCompatActivity() {
     private lateinit var database: AppDatabase
@@ -46,12 +48,22 @@ class CreateOrderActivity : AppCompatActivity() {
             etorder.text = sdf.format(Calendar.getInstance().time)
         }
 
-        spnStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        spnStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 txt_status.text = parent.getItemAtPosition(position).toString()
             }
+        }
+
+        etDesc.setOnTouchListener { v, motionEvent ->
+            if (v.id == R.id.etDesc) {
+                v.parent.requestDisallowInterceptTouchEvent(true)
+                when (motionEvent.action and MotionEvent.ACTION_MASK) {
+                    MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
+                }
+            }
+            return@setOnTouchListener false
         }
 
         btnSubmit.setOnClickListener { addOrder() }
@@ -77,6 +89,14 @@ class CreateOrderActivity : AppCompatActivity() {
                 } catch (e: Exception) {
 
                 }
+            }
+        }
+
+        btnCostView.setOnClickListener {
+            if (isUpdate) {
+                val i = Intent(this, CostPageActivity::class.java)
+                i.putExtra(SELECTED_ORDERS, arrayListOf(intent.getSerializableExtra(ORDER_DATA) as ClientOrder))
+                startActivity(i)
             }
         }
     }
@@ -110,7 +130,7 @@ class CreateOrderActivity : AppCompatActivity() {
     private fun addOrder() {
         if (validateInput()) {
             var quoteValue = etQuote.text.toString()
-            if(TextUtils.isEmpty(quoteValue))
+            if (TextUtils.isEmpty(quoteValue))
                 quoteValue = "0"
             val order = ClientOrder().apply {
                 clientId = selectedClientId
@@ -130,7 +150,7 @@ class CreateOrderActivity : AppCompatActivity() {
                 message = "Order updated successfully"
             } else {
                 val addedOrder = database.orderDao().getOrderBasedOnClientAndStyle(selectedClientId, order.style)
-                if(addedOrder == null)
+                if (addedOrder == null)
                     database.orderDao().addOrder(order)
                 else message = "Order already present."
             }
@@ -168,14 +188,14 @@ class CreateOrderActivity : AppCompatActivity() {
         return true
     }
 
-    private fun onMeasurementsClick(){
+    private fun onMeasurementsClick() {
         val intent = Intent(this@CreateOrderActivity, MeasurementActivity::class.java)
         intent.putExtra("clientId", selectedClientId)
         startActivity(intent)
     }
 
     override fun onBackPressed() {
-        if(isEdited){
+        if (isEdited) {
             setResult(Activity.RESULT_OK)
         }
         finish()

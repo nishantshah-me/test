@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@id/txt_new_order"
         android:layout_marginLeft="@dimen/std_padding"
         android:layout_marginRight="@dimen/std_padding"
-        android:layout_marginTop="@dimen/std_padding">
+        android:paddingTop="@dimen/std_padding">
 
         <LinearLayout
             android:id="@+id/ll_name"
@@ -56,6 +56,7 @@
                 android:textSize="@dimen/textsize_16sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
+                android:completionThreshold="1"
                 android:inputType="textCapCharacters" />
 
         </LinearLayout>
@@ -122,6 +123,54 @@
                 app:layout_constraintRight_toRightOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_name_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/etClientName"
+                style="@style/editText_background"
+                android:layout_width="0dp"
+                android:textSize="@dimen/textsize_16sp"
+                android:layout_height="match_parent"
+                android:hint="Enter client name"
+                android:completionThreshold="1"
+                android:layout_marginLeft="0dp"
+                android:inputType="textCapCharacters"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="@dimen/small_padding"
+                android:layout_marginEnd="@dimen/small_padding"
+                app:layout_constraintRight_toLeftOf="@+id/txt_client_name_search"/>
+
+            <TextView
+                android:id="@+id/txt_client_name_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_16sp"
+                android:text="@string/str_search"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/small_padding"
+                android:padding="4dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/title_bg"
+                app:layout_constraintRight_toLeftOf="@id/txt_client_search_cancel" />
+
+            <TextView
+                android:id="@+id/txt_client_search_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_16sp"
+                android:text="@string/str_cancel"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:padding="4dp"
+                android:background="@drawable/title_bg"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -130,7 +179,7 @@
         android:layout_height="0dp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         app:reverseLayout="false"
-        android:layout_marginTop="@dimen/std_padding"
+        android:layout_marginTop="@dimen/small_padding"
         android:layout_marginBottom="@dimen/small_padding"
         app:layout_constraintTop_toBottomOf="@id/rl_search_order"
         app:layout_constraintBottom_toTopOf="@id/btnSubmit"/>

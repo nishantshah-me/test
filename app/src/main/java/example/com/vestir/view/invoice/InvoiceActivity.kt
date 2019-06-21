@@ -17,6 +17,9 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import android.support.v4.content.FileProvider
+
+
 
 class InvoiceActivity : AppCompatActivity() {
 
@@ -57,8 +60,8 @@ class InvoiceActivity : AppCompatActivity() {
                         Bitmap.Config.ARGB_8888)
                 val canvas = Canvas(bitmap)
                 nsv_invoice.draw(canvas)
+                // dir = File("${applicationContext.filesDir}/TEMP")
                 val dir = File("${Environment.getExternalStorageDirectory()}/TEMP")
-
                 if(!dir.exists())
                     dir.mkdir()
                 val file = File("$dir/ORDER_SHARE.jpeg")
@@ -66,6 +69,7 @@ class InvoiceActivity : AppCompatActivity() {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
                 rl_progressbar.visibility = View.GONE
                 val uri = Uri.fromFile(file)
+                //val uri = FileProvider.getUriForFile(this, "{$packageName}.fileprovider", file)
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "image/*"
                 //intent.`package` = "com.whatsapp"
