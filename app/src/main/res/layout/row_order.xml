@@ -87,8 +87,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center"
-                        android:paddingTop="@dimen/small_padding"
-                        android:paddingBottom="@dimen/small_padding"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
                         android:layout_centerInParent="true"
                         android:weightSum="2">
 

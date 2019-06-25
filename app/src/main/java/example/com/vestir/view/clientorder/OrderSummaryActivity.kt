@@ -29,28 +29,38 @@ class OrderSummaryActivity : AppCompatActivity() {
 
         img_back.setOnClickListener { onBackPressed() }
         rl_all.setOnClickListener {
-            if(txt_all_order.text.toString() != "0")
+            if(txt_all_order.text.toString() != "0") {
+                rl_all.isEnabled = false
                 navigateToOrderList("")
+            }
             else showMessage()
         }
         rl_active.setOnClickListener {
-            if(txt_active_order.text.toString() != "0")
+            if(txt_active_order.text.toString() != "0"){
+                rl_active.isEnabled = false
                 navigateToOrderList(getString(R.string.status_active))
+            }
             else showMessage()
         }
         rl_trial_done.setOnClickListener {
-            if(txt_trial_done_order.text.toString() != "0")
+            if(txt_trial_done_order.text.toString() != "0") {
+                rl_trial_done.isEnabled = false
                 navigateToOrderList(getString(R.string.status_trial_done))
+            }
             else showMessage()
         }
         rl_delivered.setOnClickListener {
-            if(txt_delivered_order.text.toString() != "0")
+            if(txt_delivered_order.text.toString() != "0") {
+                rl_delivered.isEnabled = false
                 navigateToOrderList(getString(R.string.status_delivered))
+            }
             else showMessage()
         }
         rl_paid.setOnClickListener {
-            if(txt_paid_order.text.toString() != "0")
+            if(txt_paid_order.text.toString() != "0") {
+                rl_paid.isEnabled = false
                 navigateToOrderList(getString(R.string.status_paid))
+            }
             else showMessage()
         }
     }
@@ -72,6 +82,11 @@ class OrderSummaryActivity : AppCompatActivity() {
         database.orderDao().getOrderListCountBasedOnStatus(getString(R.string.status_paid)).observe(this, Observer<Int> {
             txt_paid_order.text = it.toString()
         })
+        rl_all.isEnabled = true
+        rl_active.isEnabled = true
+        rl_trial_done.isEnabled = true
+        rl_delivered.isEnabled = true
+        rl_paid.isEnabled = true
     }
 
     private fun showMessage(){
